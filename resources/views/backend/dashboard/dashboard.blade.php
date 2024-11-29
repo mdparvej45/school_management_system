@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-
 @section('content')
-This is the master sidebar.
-@show
+    <x-backend.ui.breadcrumbs :list="['Dashboard', 'Edit']" ></x-backend.ui.breadcrumbs>
+    This is Dashoard Page.
+@endsection

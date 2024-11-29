@@ -504,11 +504,12 @@
                         <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
                                 class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Lock screen</span></a>
+                        
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                        <button class="dropdown-item" type="button"><i
+                            <x-backend.ui.button class="dropdown-item" ><i
                                 class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                class="align-middle" data-key="t-logout">Logout</span></button>
+                                class="align-middle">Logout</span></x-backend.ui.button>
                             </form>
                     </div>
                 </div>

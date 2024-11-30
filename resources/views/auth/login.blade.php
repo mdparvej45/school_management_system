@@ -83,20 +83,23 @@
                                             <h5 class="text-primary">Welcome Back !</h5>
                                             <p class="text-muted">Sign in to continue to <b>Atharabari M.C. School.</b></p>
                                         </div>
-
                                         <div class="mt-3">
                                             <form action="{{ route('login') }}" method="POST" >
                                                 @csrf
                                                 
+                                               <div class="mb-1">
                                                 <x-backend.forms.input required label="Email" type="email" name="email" >
                                                 </x-backend.forms.input>
+                                               </div>
 
                                                 <div class="mb-3">
                                                     <div class="float-end">
                                                         <a href="auth-pass-reset-cover.html" class="text-muted">Forgot password?</a>
                                                     </div>
-                                                    <x-backend.forms.input required label="Password" type="password" name="password" >
-                                                    </x-backend.forms.input>
+                                                    <div class="mb-1">
+                                                        <x-backend.forms.input required label="Password" type="password" name="password" >
+                                                        </x-backend.forms.input>
+                                                    </div>
                                                 </div>
 
                                                 <div class="form-check">

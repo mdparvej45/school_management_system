@@ -34,7 +34,7 @@
                     <a class="nav-link menu-link" href="{{ route('dashboard') }}"  role="button">
                         <i class="ri-dashboard-2-line"></i> <span>Dashboards</span>
                     </a>
-                </li> <!-- end Dashboard Menu -->
+                </li> 
                 <li class="menu-title"><span data-key="t-menu">Frontend</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
@@ -283,7 +283,12 @@
                         </ul>
                     </div>
                 </li>
-
+                <li class="menu-title"><span data-key="t-menu">Backend</span></li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('student.create') }}"  role="button">
+                        <i class="ri-dashboard-2-line"></i> <span>Students</span>
+                    </a>
+                </li> 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
                         <i class="ri-layout-3-line"></i> <span data-key="t-layouts">Layouts</span>

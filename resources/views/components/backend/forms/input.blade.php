@@ -8,7 +8,7 @@
     // dd($type);
 @endphp
 
-<div class="mb-3">
+<div class="mb-2">
     @if ($label)
     <label for="{{ $name }}" class="form-label">{{ $label }}</label>
         @if ($required)

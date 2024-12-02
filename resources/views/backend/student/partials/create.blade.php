@@ -10,25 +10,71 @@
             <div class="card-body">
                 <div class="live-preview">
                     <div class="row gy-4">
-                        <div class="col-xxl-3 col-md-6">
-                           <x-backend.forms.input name="name" type="text" required label="Student name" ></x-backend.forms.input>
-                        </div>
-                        <!--end col-->
                         @php
-                            $list = ['hello', 'three']
+                        $list = ['hello', 'three']
                         @endphp
                         <div class="col-xxl-3 col-md-6">
-                            <div>
-                                <x-backend.forms.select name="class" id="class" label="Class Name" required placeholder="Choice Class..." >
-                                    @forelse ($list as $item)
-                                    <option value="1">Declined Payment</option>
-                                    @empty
-                                    <option>No Class Found</option>
-                                    @endforelse
-                                </x-backend.forms.select>
-                            </div>
+                            <x-backend.forms.select name="class" id="class" label="Class Name" required placeholder="Choice class..." >
+                                @forelse ($list as $item)
+                                <option value="1">Declined Payment</option>
+                                @empty
+                                <option>No Class Found</option>
+                                @endforelse
+                            </x-backend.forms.select>
                         </div>
-                        <!--end col-->
+                        <div class="col-xxl-3 col-md-6">
+                            <x-backend.forms.select name="session" id="session" label="Session" required placeholder="Choise session..." >
+                                @forelse ($list as $item)
+                                <option value="1">2024-25</option>
+                                @empty
+                                <option>No Class Found</option>
+                                @endforelse
+                            </x-backend.forms.select>
+                        </div>
+                        <div class="col-xxl-3 col-md-6">
+                            <x-backend.forms.select name="section" id="section" label="Section" required placeholder="Choise section..." >
+                                @forelse ($list as $item)
+                                <option value="1">2024-25</option>
+                                @empty
+                                <option>No Class Found</option>
+                                @endforelse
+                            </x-backend.forms.select>
+                        </div>
+                        <div class="col-xxl-3 col-md-6">
+                        <x-backend.forms.input name="name" type="text" required label="Student name" ></x-backend.forms.input>
+                        </div>
+                        <div class="col-xxl-3 col-md-6">
+                            <x-backend.forms.input name="father_name" type="text" required label="Father's Name" ></x-backend.forms.input>
+                        </div>
+                        <div class="col-xxl-3 col-md-6">
+                            <x-backend.forms.input name="father_nid" type="number" required label="Father NID Number" ></x-backend.forms.input>
+                        </div>
+                        <div class="col-xxl-3 col-md-6">
+                            <x-backend.forms.input name="mother_name" type="text" required label="Mother's Name" ></x-backend.forms.input>
+                        </div>
+                        <div class="col-xxl-3 col-md-6">
+                            <x-backend.forms.input name="father_nid" type="number" required label="Mother NID Number" ></x-backend.forms.input>
+                        </div>
+                        <div class="col-xxl-3 col-md-6">
+                            <x-backend.forms.input name="student_dob" type="date" required label="Student Birth Date" ></x-backend.forms.input>
+                        </div>
+                        <div class="col-xxl-3 col-md-6">
+                            <x-backend.forms.select name="group" id="group" label="Group" placeholder="Choise group..." >
+                                <option value="Science">Science</option>
+                                <option value="Business studies">Business studies</option>
+                                <option value="Humanities">Humanities</option>
+                            </x-backend.forms.select>
+                        </div>
+                        <div class="col-xxl-3 col-md-6">
+                            <x-backend.forms.image-input>
+                                
+                            </x-backend.forms.image-input>
+                        </div>
+
+
+
+
+
                         <div class="col-xxl-3 col-md-6">
                             <div>
                                 <label for="iconInput" class="form-label">Input with Icon</label>

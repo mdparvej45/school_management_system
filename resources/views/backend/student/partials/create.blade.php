@@ -9,6 +9,9 @@
             </div><!-- end card header -->
             <div class="card-body">
                 <div class="live-preview">
+                   <form action="{{ route('student.store') }}" method="post">
+                    @csrf
+                    @method('POST')
                     <div class="row gy-4">
                         @php
                         $list = ['hello', 'three']
@@ -60,7 +63,7 @@
                             <x-backend.forms.input name="mother_name" type="text" required label="Mother's Name" ></x-backend.forms.input>
                         </div>
                         <div class="col-xxl-3 col-md-6">
-                            <x-backend.forms.input name="father_nid" type="number" required label="Mother NID Number" ></x-backend.forms.input>
+                            <x-backend.forms.input name="mother_nid" type="number" required label="Mother NID Number" ></x-backend.forms.input>
                         </div>
                         <div class="col-xxl-3 col-md-6">
                             <x-backend.forms.input name="student_dob" type="date" required label="Student Birth Date" ></x-backend.forms.input>
@@ -97,7 +100,10 @@
                         </div>  
                             <!--end col-->
                     </div>
-                    <!--end row-->
+                    <x-backend.ui.button type=submit >
+                        Submit
+                    </x-backend.ui.button>
+                   </form>
                 </div>
   
                 </div>

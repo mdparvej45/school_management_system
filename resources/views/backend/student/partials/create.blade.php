@@ -15,7 +15,7 @@
                         @endphp
                         <div class="row mt-3">
                             <div class="col-md-4">
-                                <x-backend.forms.image-input class="" label="Expert Avatar" id="student" name="image" />
+                                <x-backend.forms.image-input class="" label="Picture of Student" id="student" name="image" />
                             </div>
                             <div class="col-md-8">
                                 <div class="col-xxl-6 col-md-12">
@@ -80,26 +80,21 @@
                         </div>
                         <div class="col-xxl-3 col-md-6">
                             <div>
-                                <label for="iconInput" class="form-label">Input with Icon</label>
+                                <label for="iconInput" class="form-label">Student Email</label>
                                 <div class="form-icon">
-                                    <input type="email" class="form-control form-control-icon" id="iconInput" placeholder="example@gmail.com">
+                                    <input name="student_email" type="email" class="form-control form-control-icon" id="iconInput" placeholder="example@gmail.com">
                                     <i class="ri-mail-unread-line"></i>
                                 </div>
                             </div>
                         </div>                     
-                        <div class="col-md-12">
-                           <x.backend.forms-ck-editor id="ck-editor2" required name="description" placeholder="description" label="Description" >
-
-                           </x.backend.forms-ck-editor>
-                        </div>    <div class="col-xxl-6 col-md-12">
-                            <div>
-                                <label for="iconInput" class="form-label">Input with Icon</label>
-                                <div class="form-icon">
-                                    <input type="email" class="form-control form-control-icon" id="iconInput" placeholder="example@gmail.com">
-                                    <i class="ri-mail-unread-line"></i>
-                                </div>
-                            </div>
-                        </div> 
+                        <div class="form-group col-md-12">
+                            <label for="exampleFormControlTextarea3">Present Address</label>
+                            <textarea name="present_address" class="form-control" id="exampleFormControlTextarea3" rows="7"></textarea>
+                        </div>   
+                        <div class="form-group col-md-12">
+                            <label for="exampleFormControlTextarea3">Parmanent Address</label>
+                            <textarea name="parmanent_address" class="form-control" id="exampleFormControlTextarea3" rows="7"></textarea>
+                        </div>  
                             <!--end col-->
                     </div>
                     <!--end row-->

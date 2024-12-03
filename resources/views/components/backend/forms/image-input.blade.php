@@ -19,7 +19,7 @@
         <input id="{{ $id }}" name="{{ $name }}" type="file" hidden>
         <img loading="lazy" class="w-100 border border-2 border-primary {{ $class }}" style="{{ $style }}"
             id="live-{{ $id }}"
-            src="{{ $image ? useImage($image) : asset('images/Placeholder_view_vector.svg.png') }}">
+            src="{{ $image ? useImage($image) : asset('backend/assets/images/Placeholder_view_vector.svg.png') }}">
     </label>
     <p class="mt-2 mb-0" id="{{ $name . '_note' }}">
         {!! $note !!}

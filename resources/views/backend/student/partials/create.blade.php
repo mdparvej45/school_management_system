@@ -13,32 +13,39 @@
                         @php
                         $list = ['hello', 'three']
                         @endphp
-                        <div class="col-xxl-3 col-md-6">
-                            <x-backend.forms.select name="class" id="class" label="Class Name" required placeholder="Choice class..." >
-                                @forelse ($list as $item)
-                                <option value="1">Declined Payment</option>
-                                @empty
-                                <option>No Class Found</option>
-                                @endforelse
-                            </x-backend.forms.select>
-                        </div>
-                        <div class="col-xxl-3 col-md-6">
-                            <x-backend.forms.select name="session" id="session" label="Session" required placeholder="Choise session..." >
-                                @forelse ($list as $item)
-                                <option value="1">2024-25</option>
-                                @empty
-                                <option>No Class Found</option>
-                                @endforelse
-                            </x-backend.forms.select>
-                        </div>
-                        <div class="col-xxl-3 col-md-6">
-                            <x-backend.forms.select name="section" id="section" label="Section" required placeholder="Choise section..." >
-                                @forelse ($list as $item)
-                                <option value="1">2024-25</option>
-                                @empty
-                                <option>No Class Found</option>
-                                @endforelse
-                            </x-backend.forms.select>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <x-backend.forms.image-input class="" label="Expert Avatar" id="student" name="image" />
+                            </div>
+                            <div class="col-md-8">
+                                <div class="col-xxl-6 col-md-12">
+                                    <x-backend.forms.select name="class" id="class" label="Class Name" required placeholder="Choice class..." >
+                                        @forelse ($list as $item)
+                                        <option value="1">Declined Payment</option>
+                                        @empty
+                                        <option>No Class Found</option>
+                                        @endforelse
+                                    </x-backend.forms.select>
+                                </div>
+                                <div class="col-xxl-6 col-md-12">
+                                    <x-backend.forms.select name="session" id="session" label="Session" required placeholder="Choise session..." >
+                                        @forelse ($list as $item)
+                                        <option value="1">2024-25</option>
+                                        @empty
+                                        <option>No Class Found</option>
+                                        @endforelse
+                                    </x-backend.forms.select>
+                                </div>
+                                <div class="col-xxl-6 col-md-12">
+                                    <x-backend.forms.select name="section" id="section" label="Section" required placeholder="Choise section..." >
+                                        @forelse ($list as $item)
+                                        <option value="1">2024-25</option>
+                                        @empty
+                                        <option>No Class Found</option>
+                                        @endforelse
+                                    </x-backend.forms.select>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-xxl-3 col-md-6">
                         <x-backend.forms.input name="name" type="text" required label="Student name" ></x-backend.forms.input>
@@ -66,15 +73,11 @@
                             </x-backend.forms.select>
                         </div>
                         <div class="col-xxl-3 col-md-6">
-                            <x-backend.forms.image-input>
-                                
-                            </x-backend.forms.image-input>
+                            <x-backend.forms.input name="student_contact_no" type="number" required label="Student Contact Number" ></x-backend.forms.input>
                         </div>
-
-
-
-
-
+                        <div class="col-xxl-3 col-md-6">
+                            <x-backend.forms.input name="parent_contact_no" type="number" required label="Parent Contact Number" ></x-backend.forms.input>
+                        </div>
                         <div class="col-xxl-3 col-md-6">
                             <div>
                                 <label for="iconInput" class="form-label">Input with Icon</label>
@@ -83,8 +86,21 @@
                                     <i class="ri-mail-unread-line"></i>
                                 </div>
                             </div>
-                        </div>
-                        <!--end col-->
+                        </div>                     
+                        <div class="col-md-12">
+                           <x.backend.forms-ck-editor id="ck-editor2" required name="description" placeholder="description" label="Description" >
+
+                           </x.backend.forms-ck-editor>
+                        </div>    <div class="col-xxl-6 col-md-12">
+                            <div>
+                                <label for="iconInput" class="form-label">Input with Icon</label>
+                                <div class="form-icon">
+                                    <input type="email" class="form-control form-control-icon" id="iconInput" placeholder="example@gmail.com">
+                                    <i class="ri-mail-unread-line"></i>
+                                </div>
+                            </div>
+                        </div> 
+                            <!--end col-->
                     </div>
                     <!--end row-->
                 </div>

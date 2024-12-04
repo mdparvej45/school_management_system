@@ -8,7 +8,7 @@
 @switch(str($type)->lower())
     @case('submit')
         <button
-            {{ $attributes->merge(['class' => 'btn rounded rounded-2 waves-effect waves-light'])->merge(['style' => $attributes->prepends('font-weight:500;')]) }}>{{ $slot }}</button>
+            {{ $attributes->merge(['class' => 'btn btn-primary waves-effect waves-light'])->merge(['style' => $attributes->prepends('font-weight:500;')]) }}>{{ $slot }}</button>
     @break
 
     @case('button')

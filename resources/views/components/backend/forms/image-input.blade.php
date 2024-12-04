@@ -21,9 +21,7 @@
             id="live-{{ $id }}"
             src="{{ $image ? useImage($image) : asset('backend/assets/images/Placeholder_view_vector.svg.png') }}">
     </label>
-    <p class="mt-2 mb-0" id="{{ $name . '_note' }}">
-        {!! $note !!}
-    </p>
+
     @error($name)
         <span class="text-danger">{{ $message }}</span>
     @enderror

@@ -22,7 +22,37 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('backend.student.partials.create');
+        $guardians = [
+            'Grand mother',
+            'Grand daughter',
+            'Grand father',
+            'Grandma',
+            'Aunt',
+            'Grandpa',
+            'Brother',
+            'Grandson',
+            'Maid',
+            'Caretaker',
+            'Maternal Anut',
+            'Cousin',
+            'Maternal Uncle',
+            'Daughter',
+            'Mother',
+            'Nephew',
+            'Driver',
+            'Elder Sister',
+            'Father',
+            'Niece',
+            'Paternal Aunt',
+            'Paternul Uncle',
+            'Sister',
+            'Son',
+            'Staff',
+            'Uncle',
+            'Watchman',
+            'Others',
+        ];
+        return view('backend.student.partials.create', compact('guardians'));
     }
 
     /**

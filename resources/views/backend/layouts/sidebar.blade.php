@@ -290,6 +290,11 @@
                     </a>
                 </li> 
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href=""  role="button">
+                        <i class="ri-dashboard-2-line"></i> <span>Teachers</span>
+                    </a>
+                </li> 
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
                         <i class="ri-layout-3-line"></i> <span data-key="t-layouts">Layouts</span>
                     </a>

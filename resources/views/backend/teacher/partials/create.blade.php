@@ -177,29 +177,20 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="present_address" class="form-label">Present Address</label>
+                                <label for="present_address" class="form-label">present_address</label>
                                 <textarea id="message"
                                     class="form-control @error('present_address')
                                     is-invalid
                                 @enderror"
                                     name="present_address" style="height
                                     57px" placeholder="Presant Address"></textarea>
-                                @error('present_address')
+                                @error('description')
                                     <span class="text-danger"></span>
-                                @enderror                            
-                            </div>
+                                @enderror                            </div>
                             <div class="col-md-6">
-                                <label for="parmanent_address" class="form-label">Parmanent Address</label>
-                                <textarea id="message"
-                                    class="form-control @error('parmanent_address')
-                                    is-invalid
-                                @enderror"
-                                    name="parmanent_address" style="height
-                                    57px" placeholder="Parmanent Address"></textarea>
-                                @error('parmanent_address')
-                                    <span class="text-danger"></span>
-                                @enderror  
+
                             </div>
+                        </div>
                     </div>
                     <div class="mt-3">
                         <x-backend.ui.button class="w-100" type=submit >

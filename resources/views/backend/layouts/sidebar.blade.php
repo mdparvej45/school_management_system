@@ -290,7 +290,7 @@
                     </a>
                 </li> 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href=""  role="button">
+                    <a class="nav-link menu-link" href="{{ route('teacher.create') }}"  role="button">
                         <i class="ri-dashboard-2-line"></i> <span>Teachers</span>
                     </a>
                 </li> 

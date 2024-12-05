@@ -30,7 +30,7 @@ class TeacherController extends Controller
      */
     public function store(TeacherRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**

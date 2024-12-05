@@ -18,7 +18,7 @@
                         @endphp
                         <div class="row mt-4">
                             <div class="col-md-4">
-                                <x-backend.forms.image-input class="" label="Photo" id="photo" name="image" />
+                                <x-backend.forms.image-input label="Photo" id="photo" name="image" />
                             </div>
                             <div class="col-md-8">
                                 <div class="row mb-4">
@@ -93,11 +93,11 @@
                             <div class="col-md-4">
                                 <x-backend.forms.select name="married_status" id="married_status" label="Married Status" placeholder="Choise Married Status..." >
                                     <option value="Marrid">Marrid</option>
-                                    <option value="Hinduisum">Hinduisum</option>
+                                    <option value="Unmarrid">Unmarrid</option>
                                 </x-backend.forms.select>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.input name="marriage_status" type="date" required label="Marriage Date" ></x-backend.forms.input>
+                                <x-backend.forms.input name="marriage_date" type="date" required label="Marriage Date" ></x-backend.forms.input>
                             </div>   
                         </div>
                         <div class="row mb-3">

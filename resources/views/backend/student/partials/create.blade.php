@@ -9,7 +9,7 @@
             </div><!-- end card header -->
             <div class="card-body">
                 <div class="live-preview">
-                   <form action="{{ route('student.store') }}" method="post">
+                   <form action="{{ route('student.store') }}" method="post" enctype="multipart/form-data" >
                     @csrf
                     @method('POST')
                     <div class="row gy-4">
@@ -17,7 +17,7 @@
                         $list = ['hello', 'three']
                         @endphp
                         <div class="row mt-4">
-                            <div class="col-md-4">
+                            <div class="col-md-4 h-25">
                                 <x-backend.forms.image-input class="" label="Photo" id="photo" name="image" />
                             </div>
                             <div class="col-md-8">

@@ -17,9 +17,9 @@
             </div>
         @endif
         <input id="{{ $id }}" name="{{ $name }}" type="file" hidden>
-        <img loading="lazy" class="w-100 border border-2 border-primary {{ $class }}" style="{{ $style }}"
+        <img class="w-100 border border-1 border-primary {{ $class }}" style="{{ $style }}"
             id="live-{{ $id }}"
-            src="{{ $image ? useImage($image) : asset('backend/assets/images/Placeholder_view_vector.svg.png') }}">
+            src="{{ $image ? useImage($image) : asset('backend/assets/images/placeholder.jpg') }}">
     </label>
 
     @error($name)

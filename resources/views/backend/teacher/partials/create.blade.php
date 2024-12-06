@@ -9,19 +9,20 @@
             </div><!-- end card header -->
             <div class="card-body">
                 <div class="live-preview">
-                   <form action="{{ route('teacher.store') }}" method="post">
+                   <form action="{{ route('teacher.store') }}" method="post" enctype="multipart/form-data" >
                     @csrf
-                    @method('POST')
+                    {{-- @method('POST') --}}
                     <div class="row gy-4">
                         @php
                             $list = ['hello', 'three']
                         @endphp
                         <div class="row mt-4">
                             <div class="col-md-4">
-                                <x-backend.forms.image-input label="Photo" id="photo" name="image" />
+                                <x-backend.forms.image-input label="Photo" id="teacher" name="image" />
                             </div>
                             <div class="col-md-8">
                                 <div class="row mb-4">
+                                    {{ $teacher->name_bn }}
                                     <div class="col-md-6">
                                         <x-backend.forms.input name="name_en" type="text" required label="Teacher Name(English)" ></x-backend.forms.input>
                                     </div>

@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Models;
-use Laravel\Sanctum\HasApiTokens;
+use App\Models\Backend\Teacher;
 // use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -20,6 +21,7 @@ class User extends Authenticatable
         'role',
         'name',
         'email',
+        'mobile',
         'password',
     ];
 
@@ -42,4 +44,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function teacher(){
+        return $this->hasOne(Teacher::class);
+    }
 }

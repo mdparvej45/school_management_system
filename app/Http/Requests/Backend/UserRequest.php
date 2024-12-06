@@ -11,7 +11,7 @@ class UserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'role' => 'sometimes|in:Superadmin, Principle, Teacher, Accountant, Operator, Student',
+            'name' => 'sometimes|string|max:255',
+            'email' => 'sometimes|email|unique:users,email',
+            'mobile' => 'sometimes|digits:11',
+            'password' => 'sometimes|string|max:255',
         ];
     }
 }

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\TeacherRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Backend\Teacher;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\Backend\TeacherRequest;
+
 
 class TeacherController extends Controller
 {
@@ -22,7 +26,12 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('backend.teacher.partials.create');
+
+            $user = User::find(10); // Find the user by ID
+
+            // Fetch the teacher associated with the user
+            $teacher = $user->teacher;
+        return view('backend.teacher.partials.create', compact('teacher'));
     }
 
     /**
@@ -30,7 +39,37 @@ class TeacherController extends Controller
      */
     public function store(TeacherRequest $request)
     {
-        dd($request);
+        $storeUser = DB::table('users')->insert([
+            'role' => 'Superadmin',
+            'name' => $request->name_en,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'password' => Hash::make('password123'),
+        ]);
+        try {
+            $user = User::where('email', $request->email)->firstOrFail(); // Will throw an exception if no user found
+            DB::table('teachers')->insert([
+                'user_id' => $user->id,
+                'name_en' => $request->name_en,
+                'name_bn'=> $request->name_bn,
+                'qualification'=> $request->qualification,
+                'designation'=> $request->designation,
+                'father_name'=> $request->father_name,
+                'mother_name'=> $request->mother_name,
+                'gender'=> $request->gender,
+                'religion'=> $request->religion,
+                'mobile'=> $request->mobile,
+                'dob'=> $request->dob,
+                'date_of_join' => $request->date_of_join,
+                'married_status' => $request->married_status,
+                'email' => $request->email,
+                'salary' => $request->salary,
+                'present_address'=> $request->present_address,
+                'parmanent_address' => $request->parmanent_address,
+            ]);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            echo 'User not found';
+        }
     }
 
     /**

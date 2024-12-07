@@ -22,28 +22,28 @@ class TeacherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif|max:2048', //nullable
             'name_en' => 'sometimes|string|max:255',
             'name_bn'=> 'sometimes|string|max:255',
-            'qualification'=> 'sometimes',
-            'designation'=> 'sometimes|string|max:255',
-            'assign_class'=> 'sometimes|nullable',
-            'assign_section' => 'sometimes|nullable',
-            'department'=> 'sometimes|nullable',
-            'father_name'=> 'sometimes|string|max:255',
-            'mother_name'=> 'sometimes|string|max:255',
-            'gender'=> 'required',
-            'religion'=> 'required',
-            'mobile'=> 'sometimes|digits:11',
-            'dob'=> 'sometimes|date',
+            'qualification'=> 'nullable|string|max:255', //nullable
+            'designation'=> 'nullable|string|max:255', //nullable
+            'assign_class'=> 'nullable|string|max:255', //nullable
+            'assign_section' => 'nullable|string|max:255', //nullable
+            'department'=> 'nullable|string|max:255', //nullable
+            'father_name'=> 'nullable|string|max:255', //nullable
+            'mother_name'=> 'nullable|string|max:255', //nullable
+            'gender'=> 'nullable|string|max:255', //nullable
+            'religion'=> 'nullable|string|max:255', //nullable
+            'mobile'=> 'sometimes|digits:11', 
+            'dob'=> 'sometimes|date', 
             'date_of_join' => 'sometimes|date',
-            'married_status' => 'required',
-            'marriage_date' => 'sometimes|date',
-            'email' => 'sometimes|email|unique:teachers,email',
+            'married_status' => 'nullable|string|max:255', //nullable
+            'marriage_date' => 'nullable|string|max:255', //nullable
+            'email' => 'sometimes|nullable|email|unique:teachers,email', //nullable
             'salary' => 'sometimes|numeric',
-            'blood_group' => 'sometimes|nullable',
-            'present_address'=> 'sometimes|string',
-            'parmanent_address' => 'sometimes|string',
+            'blood_group' => 'nullable|string|max:255', //nullable
+            'present_address'=> 'nullable|string|max:255', //nullable
+            'parmanent_address' => 'nullable|string|max:255', //nullable
         ];
     }
 }

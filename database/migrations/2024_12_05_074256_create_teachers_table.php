@@ -17,25 +17,25 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name_en');
             $table->string('name_bn');
-            $table->string('qualification');
-            $table->string('designation');
+            $table->string('qualification')->nullable(); //nullable
+            $table->string('designation')->nullable(); //nullable
             $table->string('assign_class')->nullable(); //nullable
             $table->string('assign_section')->nullable();//nullable
             $table->string('department')->nullable();//nullable
-            $table->string('father_name');
-            $table->string('mother_name'); 
-            $table->string('gender'); 
-            $table->string('religion'); 
+            $table->string('father_name')->nullable();//nullable
+            $table->string('mother_name')->nullable();//nullable
+            $table->string('gender')->nullable();//nullable 
+            $table->string('religion')->nullable();//nullable
             $table->string('mobile'); 
             $table->string('dob'); 
             $table->string('date_of_join');
-            $table->string('married_status');
+            $table->string('married_status')->nullable();//nullable
             $table->string('marriage_date')->nullable(); //nullable
-            $table->string('salary'); 
-            $table->string('email'); 
+            $table->integer('salary');//nullable
+            $table->string('email')->nullable();; 
             $table->string('blood_group')->nullable(); //nullable
-            $table->string('present_address'); 
-            $table->string('parmanent_address'); 
+            $table->string('present_address')->nullable();//nullable
+            $table->string('parmanent_address')->nullable();//nullable
             $table->timestamps();
     
         });

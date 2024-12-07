@@ -11,18 +11,13 @@
                 <div class="live-preview">
                    <form action="{{ route('teacher.store') }}" method="post" enctype="multipart/form-data" >
                     @csrf
-                    {{-- @method('POST') --}}
                     <div class="row gy-4">
-                        @php
-                            $list = ['hello', 'three']
-                        @endphp
                         <div class="row mt-4">
                             <div class="col-md-4">
                                 <x-backend.forms.image-input label="Photo" id="teacher" name="image" />
                             </div>
                             <div class="col-md-8">
                                 <div class="row mb-4">
-                                    {{ $teacher->name_bn }}
                                     <div class="col-md-6">
                                         <x-backend.forms.input name="name_en" type="text" required label="Teacher Name(English)" ></x-backend.forms.input>
                                     </div>
@@ -32,10 +27,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <x-backend.forms.input name="qualification" type="text" required label="Qualification" ></x-backend.forms.input>
+                                        <x-backend.forms.input name="qualification" type="text" label="Qualification" ></x-backend.forms.input>
                                     </div>
                                     <div class="col-md-6">
-                                        <x-backend.forms.input name="designation" type="text" required label="Designation" ></x-backend.forms.input>
+                                        <x-backend.forms.input name="designation" type="text" label="Designation" ></x-backend.forms.input>
                                     </div>
                                 </div>
                             </div>
@@ -59,10 +54,10 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="father_name" type="text" required label="Father Name" ></x-backend.forms.input>
+                                <x-backend.forms.input name="father_name" type="text" label="Father Name" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.input name="mother_name" type="text" required label="Mother Name" ></x-backend.forms.input>
+                                <x-backend.forms.input name="mother_name" type="text" label="Mother Name" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="gender" id="gender" label="Gender" placeholder="Choise Gender..." >
@@ -98,18 +93,19 @@
                                 </x-backend.forms.select>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.input name="marriage_date" type="date" required label="Marriage Date" ></x-backend.forms.input>
+                                <x-backend.forms.input name="marriage_date" type="date" label="Marriage Date" ></x-backend.forms.input>
                             </div>   
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="email" type="email" required label="Email" ></x-backend.forms.input>
+                                <x-backend.forms.input name="email" type="text"  label="Email" ></x-backend.forms.input>
+                                <x-backend.forms.input name="unique_id" type="text" hidden value="{{ config('app.name') . '-TECH-' . random_int(100000, 999999) }}" label="Email" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.input name="salary" type="number" required label="Salary" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.select name="blood_group" id="blood" label="Blood Group" required placeholder="Choise Blood Group..." >
+                                <x-backend.forms.select name="blood_group" id="blood" label="Blood Group" placeholder="Choise Blood Group..." >
                                     <option value="A(+)">A(+)</option>
                                     <option value="A(-)">A(-)</option>
                                     <option value="B(+)">B(+)</option>

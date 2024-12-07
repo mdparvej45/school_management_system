@@ -27,11 +27,8 @@ class TeacherController extends Controller
     public function create()
     {
 
-            $user = User::find(10); // Find the user by ID
 
-            // Fetch the teacher associated with the user
-            $teacher = $user->teacher;
-        return view('backend.teacher.partials.create', compact('teacher'));
+        return view('backend.teacher.partials.create');
     }
 
     /**
@@ -39,21 +36,25 @@ class TeacherController extends Controller
      */
     public function store(TeacherRequest $request)
     {
-        $storeUser = DB::table('users')->insert([
-            'role' => 'Superadmin',
+        DB::table('users')->insert([
+            'role' => 'Teacher',
+            'unique_id' => $request->unique_id,
             'name' => $request->name_en,
             'email' => $request->email,
             'mobile' => $request->mobile,
             'password' => Hash::make('password123'),
         ]);
         try {
-            $user = User::where('email', $request->email)->firstOrFail(); // Will throw an exception if no user found
+            $user = User::where('unique_id', $request->unique_id)->firstOrFail(); // Will throw an exception if no user found
             DB::table('teachers')->insert([
                 'user_id' => $user->id,
                 'name_en' => $request->name_en,
                 'name_bn'=> $request->name_bn,
                 'qualification'=> $request->qualification,
                 'designation'=> $request->designation,
+                'assign_class'=> $request->assign_class,
+                'assign_section' => $request->assign_section,
+                'department'=> $request->department,
                 'father_name'=> $request->father_name,
                 'mother_name'=> $request->mother_name,
                 'gender'=> $request->gender,
@@ -62,8 +63,10 @@ class TeacherController extends Controller
                 'dob'=> $request->dob,
                 'date_of_join' => $request->date_of_join,
                 'married_status' => $request->married_status,
+                'marriage_date' => $request->marriage_date,
                 'email' => $request->email,
                 'salary' => $request->salary,
+                'blood_group' => $request->blood_group,
                 'present_address'=> $request->present_address,
                 'parmanent_address' => $request->parmanent_address,
             ]);

@@ -294,6 +294,11 @@
                         <i class="ri-dashboard-2-line"></i> <span>Teachers</span>
                     </a>
                 </li> 
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('teacher.index') }}"  role="button">
+                        <i class="ri-dashboard-2-line"></i> <span>Teacher Information</span>
+                    </a>
+                </li> 
             </ul>
         </div>
         <!-- Sidebar -->

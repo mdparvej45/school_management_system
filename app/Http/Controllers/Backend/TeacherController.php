@@ -18,7 +18,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.teacher.index');
     }
 
     /**
@@ -70,6 +70,7 @@ class TeacherController extends Controller
                 'present_address'=> $request->present_address,
                 'parmanent_address' => $request->parmanent_address,
             ]);
+            return back();
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             echo 'User not found';
         }

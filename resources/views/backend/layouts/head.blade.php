@@ -24,11 +24,15 @@
 
     <!-- Icons Css -->
     <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    
 
     <!-- App Css-->
     <link href="{{ asset('backend/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     {{-- <link href="{{ asset('backend/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" /> --}}
+
+      <!-- jQuery CDN-->
+    {{-- <script src="{{ asset('backend/assets/js/jquery-3.6.4.min.js') }}" integrity="sha384-oSxMtFJLi8TV2E2dTlECn1c3NXf7E5fW3LgGksD6vlg85GpEk6TVr5RRtknjlLqg" crossorigin="anonymous"></script> --}}
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->unique(); // Ensure one-to-one
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('unique_id')->unique();
             $table->string('name_en');
             $table->string('name_bn');
             $table->string('qualification')->nullable(); //nullable
@@ -31,11 +32,12 @@ return new class extends Migration
             $table->string('date_of_join');
             $table->string('married_status')->nullable();//nullable
             $table->string('marriage_date')->nullable(); //nullable
-            $table->integer('salary');//nullable
+            $table->integer('salary');
             $table->string('email')->nullable();; 
             $table->string('blood_group')->nullable(); //nullable
             $table->string('present_address')->nullable();//nullable
             $table->string('parmanent_address')->nullable();//nullable
+            $table->integer('status')->nullable();//nullable
             $table->timestamps();
     
         });

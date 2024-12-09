@@ -1,12 +1,12 @@
 @extends('backend.layouts.app')
 @section('content')
 <x-backend.ui.breadcrumbs :list="['Dashboard', 'Teacher', 'All Teacher Information']" ></x-backend.ui.breadcrumbs>
-<div class="row">
+<div class="row text-center">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header bg-primary d-flex" id="hello" >
                 <div class="me-auto">
-                    <h5 class="card-title text-white fw-semibold" >Teacher Information</h5>
+                    <h5 class="card-title text-white fw-semibold mt-2" >Teacher Information</h5>
                 </div>
                 <div class="ms-auto">
                     <input type="text" class="form-control form-control-sm w-100" placeholder="Search">
@@ -15,488 +15,79 @@
             <div class="card-body">
                 <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                     <thead>
-                        <tr>
+                        <tr class="text-muted h6" >
                             <th scope="col" style="width: 10px;">
                                 <div class="form-check">
                                     <input class="form-check-input fs-15" type="checkbox" id="checkAll" value="option">
                                 </div>
                             </th>
-                            <th data-ordering="false">SR No.</th>
-                            <th data-ordering="false">ID</th>
-                            <th data-ordering="false">Purchase ID</th>
-                            <th data-ordering="false">Title</th>
-                            <th data-ordering="false">User</th>
-                            <th>Assigned To</th>
-                            <th>Created By</th>
-                            <th>Create Date</th>
-                            <th>Status</th>
-                            <th>Priority</th>
-                            <th>Action</th>
+                            <th data-ordering="false">#</th>
+                            <th data-ordering="false">
+                                PHOTO~NAME
+                            </th>
+                            <th data-ordering="false">
+                                DESIGNATION~ID
+                            </th>
+                            <th data-ordering="false">
+                                QUALIFICATION~NID
+                            </th>
+                            <th data-ordering="false">
+                                MOBILE~EMAIL
+                            </th>
+                            <th data-ordering="false">BLOOD</th>
+                            <th data-ordering="false">OPTIONS</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
+                      @forelse ( $teachers as $key => $teacher)
+                      <tr>
+                        <th scope="row">
+                            <div class="form-check">
+                                <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
+                            </div>
+                        </th>
+                        <td>{{ ++$key }}</td>
+                        <td>
+                            <div class="d-flex gap-1 align-items-center">
+                                <div class="flex-shrink-0">
+                                    <img src="{{ asset('backend/assets/images/avatar.png') }}" alt="" class=" border border-primary avatar-xs rounded-circle" />
                                 </div>
-                            </th>
-                            <td>01</td>
-                            <td>VLZ-452</td>
-                            <td>VLZ1400087402</td>
-                            <td><a href="#!">Post launch reminder/ post list</a></td>
-                            <td>Joseph Parker</td>
-                            <td>Alexis Clarke</td>
-                            <td>Joseph Parker</td>
-                            <td>03 Oct, 2021</td>
-                            <td><span class="badge badge-soft-info">Re-open</span></td>
-                            <td><span class="badge bg-danger">High</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end" style="">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
+                                <div class="">
+                                    {{ $teacher->name_en }}
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                </div>
-                            </th>
-                            <td>02</td>
-                            <td>VLZ-453</td>
-                            <td>VLZ1400087425</td>
-                            <td><a href="#!">Additional Calendar</a></td>
-                            <td>Diana Kohler</td>
-                            <td>Admin</td>
-                            <td>Mary Rucker</td>
-                            <td>05 Oct, 2021</td>
-                            <td><span class="badge badge-soft-secondary">On-Hold</span></td>
-                            <td><span class="badge bg-info">Medium</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end" style="">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                </div>
-                            </th>
-                            <td>03</td>
-                            <td>VLZ-454</td>
-                            <td>VLZ1400087438</td>
-                            <td><a href="#!">Make a creating an account profile</a></td>
-                            <td>Tonya Noble</td>
-                            <td>Admin</td>
-                            <td>Tonya Noble</td>
-                            <td>27 April, 2022</td>
-                            <td><span class="badge badge-soft-danger">Closed</span></td>
-                            <td><span class="badge bg-success">Low</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                </div>
-                            </th>
-                            <td>04</td>
-                            <td>VLZ-455</td>
-                            <td>VLZ1400087748</td>
-                            <td><a href="#!">Apologize for shopping Error!</a></td>
-                            <td>Joseph Parker</td>
-                            <td>Alexis Clarke</td>
-                            <td>Joseph Parker</td>
-                            <td>14 June, 2021</td>
-                            <td><span class="badge badge-soft-warning">Inprogress</span></td>
-                            <td><span class="badge bg-info">Medium</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                </div>
-                            </th>
-                            <td>05</td>
-                            <td>VLZ-456</td>
-                            <td>VLZ1400087547</td>
-                            <td><a href="#!">Support for theme</a></td>
-                            <td>Donald Palmer</td>
-                            <td>Admin</td>
-                            <td>Donald Palmer</td>
-                            <td>25 June, 2021</td>
-                            <td><span class="badge badge-soft-danger">Closed</span></td>
-                            <td><span class="badge bg-success">Low</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                </div>
-                            </th>
-                            <td>06</td>
-                            <td>VLZ-457</td>
-                            <td>VLZ1400087245</td>
-                            <td><a href="#!">Benner design for FB &amp; Twitter</a></td>
-                            <td>Mary Rucker</td>
-                            <td>Jennifer Carter</td>
-                            <td>Mary Rucker</td>
-                            <td>14 Aug, 2021</td>
-                            <td><span class="badge badge-soft-warning">Inprogress</span></td>
-                            <td><span class="badge bg-info">Medium</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                </div>
-                            </th>
-                            <td>07</td>
-                            <td>VLZ-458</td>
-                            <td>VLZ1400087785</td>
-                            <td><a href="#!">Change email option process</a></td>
-                            <td>James Morris</td>
-                            <td>Admin</td>
-                            <td>James Morris</td>
-                            <td>12 March, 2022</td>
-                            <td><span class="badge badge-soft-primary">Open</span></td>
-                            <td><span class="badge bg-danger">High</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                </div>
-                            </th>
-                            <td>08</td>
-                            <td>VLZ-460</td>
-                            <td>VLZ1400087745</td>
-                            <td><a href="#!">Support for theme</a></td>
-                            <td>Nathan Cole</td>
-                            <td>Nancy Martino</td>
-                            <td>Nathan Cole</td>
-                            <td>28 Feb, 2022</td>
-                            <td><span class="badge badge-soft-secondary">On-Hold</span></td>
-                            <td><span class="badge bg-success">Low</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                </div>
-                            </th>
-                            <td>09</td>
-                            <td>VLZ-461</td>
-                            <td>VLZ1400087179</td>
-                            <td><a href="#!">Form submit issue</a></td>
-                            <td>Grace Coles</td>
-                            <td>Admin</td>
-                            <td>Grace Coles</td>
-                            <td>07 Jan, 2022</td>
-                            <td><span class="badge badge-soft-success">New</span></td>
-                            <td><span class="badge bg-danger">High</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                </div>
-                            </th>
-                            <td>10</td>
-                            <td>VLZ-462</td>
-                            <td>VLZ140008856</td>
-                            <td><a href="#!">Edit customer testimonial</a></td>
-                            <td>Freda</td>
-                            <td>Alexis Clarke</td>
-                            <td>Freda</td>
-                            <td>16 Aug, 2021</td>
-                            <td><span class="badge badge-soft-danger">Closed</span></td>
-                            <td><span class="badge bg-info">Medium</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                </div>
-                            </th>
-                            <td>11</td>
-                            <td>VLZ-463</td>
-                            <td>VLZ1400078031</td>
-                            <td><a href="#!">Ca i have an e-copy invoice</a></td>
-                            <td>Williams</td>
-                            <td>Admin</td>
-                            <td>Williams</td>
-                            <td>24 Feb, 2022</td>
-                            <td><span class="badge badge-soft-primary">Open</span></td>
-                            <td><span class="badge bg-success">Low</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                </div>
-                            </th>
-                            <td>12</td>
-                            <td>VLZ-464</td>
-                            <td>VLZ1400087416</td>
-                            <td><a href="#!">Brand logo design</a></td>
-                            <td>Richard V.</td>
-                            <td>Admin</td>
-                            <td>Richard V.</td>
-                            <td>16 March, 2021</td>
-                            <td><span class="badge badge-soft-warning">Inprogress</span></td>
-                            <td><span class="badge bg-danger">High</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                </div>
-                            </th>
-                            <td>13</td>
-                            <td>VLZ-466</td>
-                            <td>VLZ1400089015</td>
-                            <td><a href="#!">Issue with finding information about order ?</a></td>
-                            <td>Olive Gunther</td>
-                            <td>Alexis Clarke</td>
-                            <td>Schaefer</td>
-                            <td>32 March, 2022</td>
-                            <td><span class="badge badge-soft-success">New</span></td>
-                            <td><span class="badge bg-danger">High</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                </div>
-                            </th>
-                            <td>14</td>
-                            <td>VLZ-467</td>
-                            <td>VLZ1400090324</td>
-                            <td><a href="#!">Make a creating an account profile</a></td>
-                            <td>Edwin</td>
-                            <td>Admin</td>
-                            <td>Edwin</td>
-                            <td>05 April, 2022</td>
-                            <td><span class="badge badge-soft-warning">Inprogress</span></td>
-                            <td><span class="badge bg-success">Low</span></td>
-                            <td>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ri-more-fill align-middle"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                        <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                        <li>
-                                            <a class="dropdown-item remove-item-btn">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
+                            </div>
+                        </td>
+                        <td>{{ $teacher->designation }}
+                            <br/>
+                            {{ $teacher->unique_id }}
+                        </td>
+                        <td>{{ $teacher->qualification }}</td>
+                        <td>{{ $teacher->mobile }}
+                            <br/>
+                            {{ $teacher->email }}
+                        </td>
+                        <td class="text-danger" >{{ $teacher->blood_group }}</td>
+                        <td>
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ri-more-fill align-middle"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" style="">
+                                    <a class="btn btn-success dropdown-item text-success " data-bs-toggle="modal" data-bs-target=".bs-example-modal-lg"><i class="ri-eye-fill align-bottom me-2"></i> View</a>
+                                    {{-- <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li> --}}
+                                    <li><a class="dropdown-item edit-item-btn text-secondary"><i class="ri-pencil-fill align-bottom me-2"></i> Edit</a></li>
+                                    <li>
+                                        <a class="dropdown-item remove-item-btn text-danger">
+                                            <i class="ri-delete-bin-fill align-bottom me-2"></i> Delete
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                      @empty
+                          
+                      @endforelse
                     </tbody>
                 </table>
             </div>
@@ -504,4 +95,465 @@
     </div><!--end col-->
 </div><!--end row-->
 <!--end row-->
+
+
+    <!--  Large modal example -->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content mb-2">
+
+                <div class="modal-body">
+                    <div class="container-fluid mt-2">
+                        <div class="profile-foreground position-relative mx-n4 mt-n4">
+                            <div class="profile-wid-bg">
+                                <img src="{{ asset('backend/assets/images/avatar.png') }}" alt="" class="profile-wid-img" />
+                            </div>
+                        </div>
+                        <div class="pt-4 mb-4 mb-lg-3 pb-lg-4">
+                            <div class="row g-4">
+                                <div class="col-auto">
+                                    <div class="avatar-lg">
+                                        <img src="{{ asset('backend/assets/images/avatar.png') }}" alt="user-img" class="img-thumbnail rounded-circle" />
+                                    </div>
+                                </div>
+                                <!--end col-->
+                                <div class="col">
+                                    <div class="p-2">
+                                        <h3 class="text-white mb-1">Anna Adame</h3>
+                                        <p class="text-white-75">Owner & Founder</p>
+                                        <div class="hstack text-white-50 gap-1">
+                                            <div class="me-2"><i class="ri-map-pin-user-line me-1 text-white-75 fs-16 align-middle"></i>California, United States</div>
+                                            <div>
+                                                <i class="ri-building-line me-1 text-white-75 fs-16 align-middle"></i>Themesbrand
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end col-->
+                                <div class="col-12 col-lg-auto order-last order-lg-0">
+                                    <div class="row text text-white-50 text-center">
+                                        <div class="col-lg-6 col-4">
+                                            <div class="p-2">
+                                                <h4 class="text-white mb-1">24.3K</h4>
+                                                <p class="fs-14 mb-0">Followers</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-4">
+                                            <div class="p-2">
+                                                <h4 class="text-white mb-1">1.3K</h4>
+                                                <p class="fs-14 mb-0">Following</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end col-->
+    
+                            </div>
+                            <!--end row-->
+                        </div>
+    
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div>
+                                    <div class="d-flex">
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab" role="tab">
+                                                    <i class="ri-airplay-fill d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Overview</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link fs-14" data-bs-toggle="tab" href="#activities" role="tab">
+                                                    <i class="ri-list-unordered d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Activities</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link fs-14" data-bs-toggle="tab" href="#projects" role="tab">
+                                                    <i class="ri-price-tag-line d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Projects</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="flex-shrink-0">
+                                            <a href="pages-profile-settings.html" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
+                                        </div>
+                                    </div>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content pt-4 text-muted">
+                                        <div class="tab-pane active" id="overview-tab" role="tabpanel">
+                                            <div class="row">
+                                                {{-- <div class="col-xxl-3">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title mb-5">Complete Your Profile</h5>
+                                                            <div class="progress animated-progress custom-progress progress-label">
+                                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="label">30%</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+    
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title mb-3">Info</h5>
+                                                            <div class="table-responsive">
+                                                                <table class="table table-borderless mb-0">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">Full Name :</th>
+                                                                            <td class="text-muted">Anna Adame</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">Mobile :</th>
+                                                                            <td class="text-muted">+(1) 987 6543</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">E-mail :</th>
+                                                                            <td class="text-muted">daveadame@velzon.com</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">Location :</th>
+                                                                            <td class="text-muted">California, United States
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">Joining Date</th>
+                                                                            <td class="text-muted">24 Nov 2021</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div><!-- end card body -->
+                                                    </div><!-- end card -->
+    
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title mb-4">Portfolio</h5>
+                                                            <div class="d-flex flex-wrap gap-2">
+                                                                <div>
+                                                                    <a href="javascript:void(0);" class="avatar-xs d-block">
+                                                                        <span class="avatar-title rounded-circle fs-16 bg-dark text-light">
+                                                                            <i class="ri-github-fill"></i>
+                                                                        </span>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="javascript:void(0);" class="avatar-xs d-block">
+                                                                        <span class="avatar-title rounded-circle fs-16 bg-primary">
+                                                                            <i class="ri-global-fill"></i>
+                                                                        </span>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="javascript:void(0);" class="avatar-xs d-block">
+                                                                        <span class="avatar-title rounded-circle fs-16 bg-success">
+                                                                            <i class="ri-dribbble-fill"></i>
+                                                                        </span>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="javascript:void(0);" class="avatar-xs d-block">
+                                                                        <span class="avatar-title rounded-circle fs-16 bg-danger">
+                                                                            <i class="ri-pinterest-fill"></i>
+                                                                        </span>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- end card body -->
+                                                    </div><!-- end card -->
+    
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title mb-4">Skills</h5>
+                                                            <div class="d-flex flex-wrap gap-2 fs-15">
+                                                                <a href="javascript:void(0);" class="badge badge-soft-primary">Photoshop</a>
+                                                                <a href="javascript:void(0);" class="badge badge-soft-primary">illustrator</a>
+                                                                <a href="javascript:void(0);" class="badge badge-soft-primary">HTML</a>
+                                                                <a href="javascript:void(0);" class="badge badge-soft-primary">CSS</a>
+                                                                <a href="javascript:void(0);" class="badge badge-soft-primary">Javascript</a>
+                                                                <a href="javascript:void(0);" class="badge badge-soft-primary">Php</a>
+                                                                <a href="javascript:void(0);" class="badge badge-soft-primary">Python</a>
+                                                            </div>
+                                                        </div><!-- end card body -->
+                                                    </div><!-- end card -->
+    
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="d-flex align-items-center mb-4">
+                                                                <div class="flex-grow-1">
+                                                                    <h5 class="card-title mb-0">Suggestions</h5>
+                                                                </div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="dropdown">
+                                                                        <a href="#" role="button" id="dropdownMenuLink2" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                            <i class="ri-more-2-fill fs-14"></i>
+                                                                        </a>
+    
+                                                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink2">
+                                                                            <li><a class="dropdown-item" href="#">View</a></li>
+                                                                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                                                                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="d-flex align-items-center py-3">
+                                                                    <div class="avatar-xs flex-shrink-0 me-3">
+                                                                        <img src="assets/images/users/avatar-3.jpg" alt="" class="img-fluid rounded-circle" />
+                                                                    </div>
+                                                                    <div class="flex-grow-1">
+                                                                        <div>
+                                                                            <h5 class="fs-14 mb-1">Esther James</h5>
+                                                                            <p class="fs-13 text-muted mb-0">Frontend Developer</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-shrink-0 ms-2">
+                                                                        <button type="button" class="btn btn-sm btn-outline-success"><i class="ri-user-add-line align-middle"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="d-flex align-items-center py-3">
+                                                                    <div class="avatar-xs flex-shrink-0 me-3">
+                                                                        <img src="assets/images/users/avatar-4.jpg" alt="" class="img-fluid rounded-circle" />
+                                                                    </div>
+                                                                    <div class="flex-grow-1">
+                                                                        <div>
+                                                                            <h5 class="fs-14 mb-1">Jacqueline Steve</h5>
+                                                                            <p class="fs-13 text-muted mb-0">UI/UX Designer</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-shrink-0 ms-2">
+                                                                        <button type="button" class="btn btn-sm btn-outline-success"><i class="ri-user-add-line align-middle"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="d-flex align-items-center py-3">
+                                                                    <div class="avatar-xs flex-shrink-0 me-3">
+                                                                        <img src="assets/images/users/avatar-5.jpg" alt="" class="img-fluid rounded-circle" />
+                                                                    </div>
+                                                                    <div class="flex-grow-1">
+                                                                        <div>
+                                                                            <h5 class="fs-14 mb-1">George Whalen</h5>
+                                                                            <p class="fs-13 text-muted mb-0">Backend Developer</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-shrink-0 ms-2">
+                                                                        <button type="button" class="btn btn-sm btn-outline-success"><i class="ri-user-add-line align-middle"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- end card body -->
+                                                    </div>
+                                                    <!--end card-->
+    
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="d-flex align-items-center mb-4">
+                                                                <div class="flex-grow-1">
+                                                                    <h5 class="card-title mb-0">Popular Posts</h5>
+                                                                </div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="dropdown">
+                                                                        <a href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                            <i class="ri-more-2-fill fs-14"></i>
+                                                                        </a>
+    
+                                                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink1">
+                                                                            <li><a class="dropdown-item" href="#">View</a></li>
+                                                                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                                                                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex mb-4">
+                                                                <div class="flex-shrink-0">
+                                                                    <img src="assets/images/small/img-4.jpg" alt="" height="50" class="rounded" />
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3 overflow-hidden">
+                                                                    <a href="javascript:void(0);">
+                                                                        <h6 class="text-truncate fs-14">Design your apps in your own way</h6>
+                                                                    </a>
+                                                                    <p class="text-muted mb-0">15 Dec 2021</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex mb-4">
+                                                                <div class="flex-shrink-0">
+                                                                    <img src="assets/images/small/img-5.jpg" alt="" height="50" class="rounded" />
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3 overflow-hidden">
+                                                                    <a href="javascript:void(0);">
+                                                                        <h6 class="text-truncate fs-14">Smartest Applications for Business</h6>
+                                                                    </a>
+                                                                    <p class="text-muted mb-0">28 Nov 2021</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <div class="flex-shrink-0">
+                                                                    <img src="assets/images/small/img-6.jpg" alt="" height="50" class="rounded" />
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3 overflow-hidden">
+                                                                    <a href="javascript:void(0);">
+                                                                        <h6 class="text-truncate fs-14">How to get creative in your work</h6>
+                                                                    </a>
+                                                                    <p class="text-muted mb-0">21 Nov 2021</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--end card-body-->
+                                                    </div>
+                                                    <!--end card-->
+                                                </div> --}}
+                                                <!--end col-->
+                                                <div class="col-xxl-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title mb-3">About</h5>
+                                                            <p>Hi I'm Anna Adame, It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is European languages are members of the same family.</p>
+                                                            <p>You always want to make sure that your fonts work well together and try to limit the number of fonts you use to three or less. Experiment and play around with the fonts that you already have in the software you’re working with reputable font websites. This may be the most commonly encountered tip I received from the designers I spoke with. They highly encourage that you use different fonts in one design, but do not over-exaggerate and go overboard.</p>
+                                                            <div class="row">
+                                                                <div class="col-6 col-md-4">
+                                                                    <div class="d-flex mt-4">
+                                                                        <div class="flex-shrink-0 avatar-xs align-self-center me-3">
+                                                                            <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
+                                                                                <i class="ri-user-2-fill"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex-grow-1 overflow-hidden">
+                                                                            <p class="mb-1">Designation :</p>
+                                                                            <h6 class="text-truncate mb-0">Lead Designer / Developer</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!--end col-->
+                                                                <div class="col-6 col-md-4">
+                                                                    <div class="d-flex mt-4">
+                                                                        <div class="flex-shrink-0 avatar-xs align-self-center me-3">
+                                                                            <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
+                                                                                <i class="ri-global-line"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex-grow-1 overflow-hidden">
+                                                                            <p class="mb-1">Website :</p>
+                                                                            <a href="#" class="fw-semibold">www.velzon.com</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!--end col-->
+                                                            </div>
+                                                            <!--end row-->
+                                                        </div>
+                                                        <!--end card-body-->
+                                                    </div><!-- end card -->    
+                                                </div>
+                                                <!--end col-->
+                                            </div>
+                                            <!--end row-->
+                                        </div>
+                                        <div class="tab-pane fade" id="activities" role="tabpanel">
+                                            <div class="col-xxl-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title mb-3">About</h5>
+                                                        <p>Hi I'm Anna Adame, It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is European languages are members of the same family.</p>
+                                                        <p>You always want to make sure that your fonts work well together and try to limit the number of fonts you use to three or less. Experiment and play around with the fonts that you already have in the software you’re working with reputable font websites. This may be the most commonly encountered tip I received from the designers I spoke with. They highly encourage that you use different fonts in one design, but do not over-exaggerate and go overboard.</p>
+                                                        <div class="row">
+                                                            <div class="col-6 col-md-4">
+                                                                <div class="d-flex mt-4">
+                                                                    <div class="flex-shrink-0 avatar-xs align-self-center me-3">
+                                                                        <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
+                                                                            <i class="ri-user-2-fill"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1 overflow-hidden">
+                                                                        <p class="mb-1">Designation :</p>
+                                                                        <h6 class="text-truncate mb-0">Lead Designer / Developer</h6>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--end col-->
+                                                            <div class="col-6 col-md-4">
+                                                                <div class="d-flex mt-4">
+                                                                    <div class="flex-shrink-0 avatar-xs align-self-center me-3">
+                                                                        <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
+                                                                            <i class="ri-global-line"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1 overflow-hidden">
+                                                                        <p class="mb-1">Website :</p>
+                                                                        <a href="#" class="fw-semibold">www.velzon.com</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--end col-->
+                                                        </div>
+                                                        <!--end row-->
+                                                    </div>
+                                                    <!--end card-body-->
+                                                </div><!-- end card -->    
+                                            </div>
+                                            <!--end card-->
+                                        </div>
+                                        <!--end tab-pane-->
+                                        <div class="tab-pane fade" id="projects" role="tabpanel">
+                                            <div class="col-xxl-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title mb-3">About</h5>
+                                                        <p>Hi I'm Anna Adame, It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is European languages are members of the same family.</p>
+                                                        <p>You always want to make sure that your fonts work well together and try to limit the number of fonts you use to three or less. Experiment and play around with the fonts that you already have in the software you’re working with reputable font websites. This may be the most commonly encountered tip I received from the designers I spoke with. They highly encourage that you use different fonts in one design, but do not over-exaggerate and go overboard.</p>
+                                                        <div class="row">
+                                                            <div class="col-6 col-md-4">
+                                                                <div class="d-flex mt-4">
+                                                                    <div class="flex-shrink-0 avatar-xs align-self-center me-3">
+                                                                        <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
+                                                                            <i class="ri-user-2-fill"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1 overflow-hidden">
+                                                                        <p class="mb-1">Designation :</p>
+                                                                        <h6 class="text-truncate mb-0">Lead Designer / Developer</h6>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--end col-->
+                                                            <div class="col-6 col-md-4">
+                                                                <div class="d-flex mt-4">
+                                                                    <div class="flex-shrink-0 avatar-xs align-self-center me-3">
+                                                                        <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
+                                                                            <i class="ri-global-line"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1 overflow-hidden">
+                                                                        <p class="mb-1">Website :</p>
+                                                                        <a href="#" class="fw-semibold">www.velzon.com</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--end col-->
+                                                        </div>
+                                                        <!--end row-->
+                                                    </div>
+                                                    <!--end card-body-->
+                                                </div><!-- end card -->    
+                                            </div>
+                                            <!--end card-->
+                                        </div>
+                                    </div>
+                                    <!--end tab-content-->
+                                </div>
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+    
+                    </div><!-- container-fluid -->
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:void(0);" class="btn btn-link link-success fw-medium" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Close</a>
+                    <button type="button" class="btn btn-primary ">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @endsection

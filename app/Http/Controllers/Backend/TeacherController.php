@@ -18,7 +18,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return view('backend.teacher.index');
+        $teachers = DB::table('teachers')->select('id', 'name_en', 'designation', 'unique_id', 'qualification', 'mobile', 'email', 'blood_group')->orderBy('id', 'desc')->get();
+        return view('backend.teacher.index', compact('teachers'));
     }
 
     /**
@@ -48,6 +49,7 @@ class TeacherController extends Controller
             $user = User::where('unique_id', $request->unique_id)->firstOrFail(); // Will throw an exception if no user found
             DB::table('teachers')->insert([
                 'user_id' => $user->id,
+                'unique_id' => $request->unique_id,
                 'name_en' => $request->name_en,
                 'name_bn'=> $request->name_bn,
                 'qualification'=> $request->qualification,

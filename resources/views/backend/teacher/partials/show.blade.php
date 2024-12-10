@@ -53,7 +53,7 @@
                     </li>
                 </ul>
                 <div class="flex-shrink-0">
-                    <a href="pages-profile-settings.html" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
+                    <a href="{{ route('teacher.edit', $teacher) }}" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
                 </div>
             </div>
             <!-- Tab panes -->
@@ -385,7 +385,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title mb-3">About</h5>
-
+                            <p>{{ $teacher->about }} </p>
 
                         </div>
                         <!--end card-body-->

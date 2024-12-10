@@ -73,9 +73,8 @@
                                     <i class="ri-more-fill align-middle"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" style="">
-                                    <a class="btn btn-success dropdown-item text-success " data-bs-toggle="modal" data-bs-target=".bs-example-modal-lg"><i class="ri-eye-fill align-bottom me-2"></i> View</a>
-                                    {{-- <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li> --}}
-                                    <li><a class="dropdown-item edit-item-btn text-secondary"><i class="ri-pencil-fill align-bottom me-2"></i> Edit</a></li>
+                                    <li><a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-success dropdown-item text-success"><i class="ri-eye-fill align-bottom me-2"></i> View</a></li>
+                                    <li><a href="{{ route('teacher.edit', $teacher->id) }}" class="dropdown-item edit-item-btn text-secondary"><i class="ri-pencil-fill align-bottom me-2"></i> Edit</a></li>
                                     <li>
                                         <a class="dropdown-item remove-item-btn text-danger">
                                             <i class="ri-delete-bin-fill align-bottom me-2"></i> Delete
@@ -97,10 +96,16 @@
 <!--end row-->
 
 
+
+{{-- class="modal fade bs-example-modal-lg" --}}
+
+
+
     <!--  Large modal example -->
-    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div id="modal" class="modal fade" style="display: none;"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content mb-2">
+                <span class="close" onclick="document.getElementById('modal').style.display='none';">&times;</span>
 
                 <div class="modal-body">
                     <div class="container-fluid mt-2">
@@ -555,5 +560,6 @@
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    </div><!-- /.modal -->  
+
 @endsection

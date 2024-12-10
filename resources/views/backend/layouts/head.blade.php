@@ -34,6 +34,10 @@
       <!-- jQuery CDN-->
     {{-- <script src="{{ asset('backend/assets/js/jquery-3.6.4.min.js') }}" integrity="sha384-oSxMtFJLi8TV2E2dTlECn1c3NXf7E5fW3LgGksD6vlg85GpEk6TVr5RRtknjlLqg" crossorigin="anonymous"></script> --}}
 
+
+    {{-- HTMX USE --}}
+    <script src="{{ asset('backend/assets/js/htmx.min.js') }}"></script>
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

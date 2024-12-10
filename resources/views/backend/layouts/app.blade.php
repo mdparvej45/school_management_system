@@ -17,8 +17,7 @@
         <!-- ========== Sidebar ========== -->
         @include('backend.layouts.sidebar')
         <!-- Left Sidebar End -->
-        <!-- Vertical Overlay-->
-        <div class="vertical-overlay"></div>
+
 
         <!-- ============================================================== -->
         <!-- Start right Content here -->

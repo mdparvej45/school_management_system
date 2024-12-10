@@ -201,6 +201,20 @@
                                 @enderror  
                             </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="about" class="form-label">About</label>
+                            <textarea id="message"
+                                class="form-control @error('about')
+                                is-invalid
+                            @enderror"
+                                name="about" style="height
+                                57px" placeholder="Presant Address"></textarea>
+                            @error('about')
+                                <span class="text-danger"></span>
+                            @enderror                            
+                        </div>
+                    </div>
                     <div class="mt-3">
                         <x-backend.ui.button class="w-100" type=submit >
                             Submit

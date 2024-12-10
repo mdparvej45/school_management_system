@@ -44,6 +44,7 @@ class TeacherRequest extends FormRequest
             'blood_group' => 'nullable|string|max:255', //nullable
             'present_address'=> 'nullable|string|max:255', //nullable
             'parmanent_address' => 'nullable|string|max:255', //nullable
+            'about' => 'nullable|string|max:65535', //nullable
         ];
     }
 }

@@ -83,7 +83,7 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {
-        //
+        return view('backend.teacher.partials.show', compact('teacher'));
     }
 
     /**
@@ -91,7 +91,7 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        //
+        return view('backend.teacher.partials.show');
     }
 
     /**

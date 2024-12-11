@@ -52,7 +52,8 @@
                         </a>
                     </li>
                 </ul>
-                <div class="flex-shrink-0">
+                <div class="flex-shrink-0 btn-group">
+                    <a href="{{ route('teacher.index') }}" class="btn btn-info"><i class="ri-arrow-go-back-line align-bottom"></i> Back</a>
                     <a href="{{ route('teacher.edit', $teacher) }}" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
                 </div>
             </div>
@@ -76,7 +77,7 @@
                         <div class="col-xxl-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title mb-3">About</h5>
+                                    <h5 class="card-title mb-3">Overview</h5>
                                     <div class="row">
                                         <div class="col-6 col-md-4">
                                             <div class="d-flex mt-4">

@@ -99,7 +99,7 @@
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <x-backend.forms.input name="email" type="text"  label="Email" ></x-backend.forms.input>
-                                <x-backend.forms.input name="unique_id" type="text" hidden value="{{'TECH-' . random_int(100000, 999999) }}" label="Email" ></x-backend.forms.input>
+                                <x-backend.forms.input name="unique_id" type="text" hidden value="{{'TECH' . random_int(1000000, 9999999) }}" label="Email" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.input name="salary" type="number" required label="Salary" ></x-backend.forms.input>

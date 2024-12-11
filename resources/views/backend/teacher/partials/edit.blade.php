@@ -99,7 +99,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input  type="text" :value="$teacher->email ?? old('email')"  label="Email" ></x-backend.forms.input>
+                                <x-backend.forms.input type="text" :value="$teacher->email ?? old('email')"  label="Email" ></x-backend.forms.input>
                                 <x-backend.forms.input name="unique_id" :value="$teacher->unique_id ?? old('unique_id')" type="text" hidden value="{{'TECH-' . random_int(100000, 999999) }}" label="Email" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">

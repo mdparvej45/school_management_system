@@ -34,6 +34,9 @@
                             <th data-ordering="false">
                                 MOBILE~EMAIL
                             </th>
+                            <th data-ordering="false">
+                                STATUS
+                            </th>
                             <th data-ordering="false">BLOOD</th>
                             <th data-ordering="false">OPTIONS</th>
                         </tr>
@@ -41,51 +44,65 @@
                     <tbody>
                       @forelse ( $teachers as $key => $teacher)
                       <tr>
-                        <th scope="row">
-                            <div class="form-check">
-                                <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                            </div>
-                        </th>
-                        <td>{{ ++$key }}</td>
-                        <td>
-                            <div class="d-flex gap-1 align-items-center">
-                                <div class="flex-shrink-0">
-                                    <img src="{{ asset('backend/assets/images/avatar.png') }}" alt="" class=" border border-primary avatar-xs rounded-circle" />
+                            <th scope="row">
+                                <div class="form-check">
+                                    <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
                                 </div>
-                                <div class="">
-                                    {{ $teacher->name_en }}
+                            </th>
+                            <td>{{ ++$key }}</td>
+                            <td>
+                                <div class="d-flex gap-1 align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <img src="{{ asset('backend/assets/images/avatar.png') }}" alt="" class=" border border-primary avatar-xs rounded-circle" />
+                                    </div>
+                                    <div class="">
+                                        {{ $teacher->name_en }}
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td>{{ $teacher->designation }}
-                            <br/>
-                            {{ $teacher->unique_id }}
-                        </td>
-                        <td>{{ $teacher->qualification }}</td>
-                        <td>{{ $teacher->mobile }}
-                            <br/>
-                            {{ $teacher->email }}
-                        </td>
-                        <td class="text-danger" >{{ $teacher->blood_group }}</td>
-                        <td>
-                            <div class="dropdown d-inline-block">
-                                <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="ri-more-fill align-middle"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end" style="">
-                                    <li><a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-success dropdown-item text-success"><i class="ri-eye-fill align-bottom me-2"></i> View</a></li>
-                                    <li><a href="{{ route('teacher.edit', $teacher->id) }}" class="dropdown-item edit-item-btn text-secondary"><i class="ri-pencil-fill align-bottom me-2"></i> Edit</a></li>
-                                    <li>
-                                        <a class="dropdown-item remove-item-btn text-danger">
-                                            <i class="ri-delete-bin-fill align-bottom me-2"></i> Delete
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
+                            </td>
+                            <td>{{ $teacher->designation }}
+                                <br/>
+                                {{ $teacher->unique_id }}
+                            </td>
+                            <td>{{ $teacher->qualification }}</td>
+                            <td>{{ $teacher->mobile }}
+                                <br/>
+                                {{ $teacher->email }}
+                            </td>
+                            <td>{{ $teacher->status }}
+                            </td>
+                            <td class="text-danger" >{{ $teacher->blood_group }}</td>
+                            <td>
+                                <div class="dropdown d-inline-block">
+                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="ri-more-fill align-middle"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" style="">
+                                        <li><a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-success dropdown-item text-success"><i class="ri-eye-fill align-bottom me-2"></i> View</a></li>
+                                        <li><a href="{{ route('teacher.edit', $teacher->id) }}" class="dropdown-item edit-item-btn text-secondary"><i class="ri-pencil-fill align-bottom me-2"></i> Edit</a></li>
+                                        <li>
+                                            <form action="{{ route('teacher.status', $teacher->id) }}" method="post">
+                                                @csrf
+                                                @method('PATCH')
+                                           
+                                                    <x-backend.ui.button type="submit" class="dropdown-item remove-item-btn text-danger">
+                                                        @if($teacher->status === 'Unapproved')
+                                                        <span class="text-primary"><i class="ri-checkbox-circle-line align-bottom me-2"></i> Approve</span>
+                                                        @elseif($teacher->status === 'Active')
+                                                        <span class="text-danger"><i class="ri-close-circle-line align-bottom me-2"></i> Inactive</span>
+                                                        @elseif($teacher->status === 'Inactive')
+                                                        <span class="text-success"><i class="ri-checkbox-blank-circle-fill align-bottom me-2"></i> Active</span>
+                                                        @endif
+                                                    </x-backend.ui.button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+
                     </tr>
                       @empty
-                          
+                          <p>Lorem, ipsum dolor.</p>
                       @endforelse
                     </tbody>
                 </table>

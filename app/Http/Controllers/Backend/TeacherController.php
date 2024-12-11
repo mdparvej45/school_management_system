@@ -18,7 +18,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = DB::table('teachers')->select('id', 'name_en', 'designation', 'unique_id', 'qualification', 'mobile', 'email', 'blood_group')->orderBy('id', 'desc')->get();
+        $teachers = DB::table('teachers')->select('id', 'name_en', 'designation', 'unique_id', 'qualification', 'mobile', 'email', 'blood_group', 'status')->orderBy('id', 'desc')->get();
         return view('backend.teacher.index', compact('teachers'));
     }
 
@@ -71,6 +71,7 @@ class TeacherController extends Controller
                 'blood_group' => $request->blood_group,
                 'present_address'=> $request->present_address,
                 'parmanent_address' => $request->parmanent_address,
+                'status' => 'Unapproved', //For status
             ]);
             return back();
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
@@ -99,8 +100,34 @@ class TeacherController extends Controller
      */
     public function update(TeacherRequest $request, Teacher $teacher)
     {
-        dd($teacher);
+        // dd($teacher);
     }
+
+
+
+  /**
+     * This is teacher active and deactive method.
+     */
+    public function status(Request $teacher)
+    {
+       $find = Teacher::find($teacher->id);
+       dd($find);
+      if($find->status == 'Unapproved'){
+        DB::table('teachers')->update([
+            $find->status => 'Active', //For status 
+        ]);
+      }elseif($find->status == 'Inactive'){
+        DB::table('teachers')->update([
+            $find->status => 'Active', //For status
+        ]);
+      }else{
+        DB::table('teachers')->update([
+            $find->status => 'Inactive', //For status
+        ]);
+      }
+      return back();
+    }
+    
 
     /**
      * Remove the specified resource from storage.

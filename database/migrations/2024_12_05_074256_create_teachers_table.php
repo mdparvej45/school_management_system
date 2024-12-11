@@ -37,9 +37,9 @@ return new class extends Migration
             $table->string('blood_group')->nullable(); //nullable
             $table->string('present_address')->nullable();//nullable
             $table->string('parmanent_address')->nullable();//nullable
-            $table->integer('status')->nullable();//nullable
+            $table->enum('status', ['Unapproved', 'Active', 'Inactive'])->default('Unapproved');
             $table->timestamps();
-    
+            
         });
     }
 

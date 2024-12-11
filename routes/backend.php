@@ -17,6 +17,7 @@ prefix('admin')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('teacher', TeacherController::class);
+    Route::patch('/teacher//{id}/status', [TeacherController::class, 'status'])->name('teacher.status');
     Route::resource('student', StudentController::class);
 
 });

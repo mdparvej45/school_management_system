@@ -111,19 +111,14 @@ class TeacherController extends Controller
     public function status(Request $teacher)
     {
        $find = Teacher::find($teacher->id);
-       dd($find);
       if($find->status == 'Unapproved'){
-        DB::table('teachers')->update([
-            $find->status => 'Active', //For status 
-        ]);
+        Teacher::find($teacher->id)->update(['status' => 'Active']);
+
       }elseif($find->status == 'Inactive'){
-        DB::table('teachers')->update([
-            $find->status => 'Active', //For status
-        ]);
+        Teacher::find($teacher->id)->update(['status' => 'Active']);
       }else{
-        DB::table('teachers')->update([
-            $find->status => 'Inactive', //For status
-        ]);
+        Teacher::find($teacher->id)->update(['status' => 'Inactive']);
+
       }
       return back();
     }

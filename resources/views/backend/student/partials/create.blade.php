@@ -53,13 +53,13 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="admission_fee" type="number" required readonly label="Admission Fee" ></x-backend.forms.input>
+                                <x-backend.forms.input name="admission_fee" type="number" readonly label="Admission Fee" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.input name="roll" type="text" required label="Roll" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.select name="group" id="group" label="Group" placeholder="Choise Group..." >
+                                <x-backend.forms.select name="group" id="group" required label="Group" placeholder="Choise Group..." >
                                     <option value="General">General</option>
                                     <option value="Science">Science</option>
                                     <option value="Business studies">Business Studies</option>
@@ -69,10 +69,10 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="scholarship" type="text" required label="Scholarship" ></x-backend.forms.input>
+                                <x-backend.forms.input name="scholarship" type="text" label="Scholarship" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.select name="admission_session" id="session" label="Admission Session" placeholder="Choise Admission Session..." >
+                                <x-backend.forms.select name="admission_session" required id="session" label="Admission Session" placeholder="Choise Admission Session..." >
                                     <option value="2025">2025</option>
                                     <option value="2024">2024</option>
                                     <option value="2023">2023</option>
@@ -80,7 +80,7 @@
                                 </x-backend.forms.select>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.select name="admission_year" id="year" label="Admission Year" placeholder="Choise Admission Year..." >
+                                <x-backend.forms.select name="admission_year" required id="year" label="Admission Year" placeholder="Choise Admission Year..." >
                                     <option value="2025">2025</option>
                                     <option value="2024">2024</option>
                                     <option value="2023">2023</option>
@@ -90,35 +90,35 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="father_name_en" type="text" required label="Father Name(English)" ></x-backend.forms.input>
+                                <x-backend.forms.input name="father_name_en" type="text" label="Father Name(English)" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.input name="father_name_bn" type="text" required label="Father Name(বাংলা)" ></x-backend.forms.input>
+                                <x-backend.forms.input name="father_name_bn" type="text" label="Father Name(বাংলা)" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.input name="father_mobile" type="number" required label="Father Mobile" ></x-backend.forms.input>
+                                <x-backend.forms.input name="father_mobile" type="number" label="Father Mobile" ></x-backend.forms.input>
                             </div>   
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="mother_name_en" type="text" required label="Mother Name(English)" ></x-backend.forms.input>
+                                <x-backend.forms.input name="mother_name_en" type="text" label="Mother Name(English)" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.input name="mother_name_bn" type="text" required label="Mother Name(বাংলা)" ></x-backend.forms.input>
+                                <x-backend.forms.input name="mother_name_bn" type="text" label="Mother Name(বাংলা)" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.input name="mother_mobile" type="number" required label="Mother Mobile" ></x-backend.forms.input>
+                                <x-backend.forms.input name="mother_mobile" type="number" label="Mother Mobile" ></x-backend.forms.input>
                             </div>   
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="father_occ" type="text" required label="Father Occupation" ></x-backend.forms.input>
+                                <x-backend.forms.input name="father_occ" type="text" label="Father Occupation" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.input name="mother_occ" type="text" required label="Mother Occupation" ></x-backend.forms.input>
+                                <x-backend.forms.input name="mother_occ" type="text" label="Mother Occupation" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.select name="blood_group" id="blood" label="Blood Group" required placeholder="Choise Blood Group..." >
+                                <x-backend.forms.select name="blood_group" id="blood" label="Blood Group" placeholder="Choise Blood Group..." >
                                     <option value="A(+)">A(+)</option>
                                     <option value="A(-)">A(-)</option>
                                     <option value="B(+)">B(+)</option>
@@ -146,29 +146,29 @@
                                 </x-backend.forms.select>
                             </div>  
                             <div class="col-md-4">
-                                <x-backend.forms.input name="nationality" type="text" required label="Nationality" ></x-backend.forms.input>
+                                <x-backend.forms.input name="nationality" type="text" label="Nationality" ></x-backend.forms.input>
                             </div> 
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="email" type="text" required label="Email" ></x-backend.forms.input>                           
+                                <x-backend.forms.input name="email" type="text" label="Email" ></x-backend.forms.input>                           
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.input name="dob" type="date" required label="Date of Birth" ></x-backend.forms.input>                           
                             </div>  
                             <div class="col-md-4">
-                                <x-backend.forms.input name="guardian_name" type="text" required label="Guardian Name" ></x-backend.forms.input>
+                                <x-backend.forms.input name="guardian_name" type="text" label="Guardian Name" ></x-backend.forms.input>
                             </div> 
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="guardian_occupation" type="text" required label="Guardian Occupation" ></x-backend.forms.input>                           
+                                <x-backend.forms.input name="guardian_occupation" type="text" label="Guardian Occupation" ></x-backend.forms.input>                           
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.input name="guardian_mobile" type="number" required label="Guardian Mobile" ></x-backend.forms.input>                           
+                                <x-backend.forms.input name="guardian_mobile" type="number" label="Guardian Mobile" ></x-backend.forms.input>                           
                             </div>  
                             <div class="col-md-4">
-                                <x-backend.forms.select name="guardian_relation" id="guardian" label="Guardian Relation" required placeholder="Choise Relation..." >
+                                <x-backend.forms.select name="guardian_relation" id="guardian" label="Guardian Relation" placeholder="Choise Relation..." >
                                     @foreach ($guardians as $guardian)
                                     <option value="{{ $guardian }}">{{ $guardian }}</option>
                                     @endforeach

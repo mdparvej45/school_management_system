@@ -69,7 +69,7 @@
                                 <br/>
                                 {{ $teacher->email }}
                             </td>
-                            <td>{{ $teacher->status }}
+                            <td class="{{ $teacher->status == 'Unapproved' ? "text-warning" : ($teacher->status == 'Active' ? "text-success" : "text-danger") }}" ><i class="ri-checkbox-blank-circle-fill align-bottom me-2"></i>{{ $teacher->status }}
                             </td>
                             <td class="text-danger" >{{ $teacher->blood_group }}</td>
                             <td>
@@ -86,13 +86,7 @@
                                                 @method('PATCH')
                                            
                                                     <x-backend.ui.button type="submit" class="dropdown-item remove-item-btn text-danger">
-                                                        @if($teacher->status === 'Unapproved')
-                                                        <span class="text-primary"><i class="ri-checkbox-circle-line align-bottom me-2"></i> Approve</span>
-                                                        @elseif($teacher->status === 'Active')
-                                                        <span class="text-danger"><i class="ri-close-circle-line align-bottom me-2"></i> Inactive</span>
-                                                        @elseif($teacher->status === 'Inactive')
-                                                        <span class="text-success"><i class="ri-checkbox-blank-circle-fill align-bottom me-2"></i> Active</span>
-                                                        @endif
+                                                        <span class="{{ $teacher->status == 'Unapproved' ? "text-primary" : ($teacher->status == 'Active' ? "text-danger" : "text-success") }}"><i class="{{ $teacher->status == 'Unapproved' ? "ri-close-circle-line" : ($teacher->status == 'Active' ? "ri-close-circle-line" : "ri-checkbox-blank-circle-fill") }} align-bottom me-2"></i> {{ $teacher->status == 'Unapproved' ? "Approve" : ($teacher->status == 'Active' ? "Inactive" : "Active") }}</span>
                                                     </x-backend.ui.button>
                                             </form>
                                         </li>

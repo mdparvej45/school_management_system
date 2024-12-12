@@ -22,7 +22,7 @@
         @error($name)
         is-invalid
         @enderror"
-        {{ $attributes->merge(['placeholder' => $label])->merge(['value' => old($name)]) }}>
+        {{ $attributes->merge(['value' => old($name)]) }}>
         <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
         @error($name)
         <span class="text-danger">{{ $message }}</span>
@@ -33,7 +33,7 @@
         @error($name)
          is-invalid
         @enderror"
-        {{ $attributes->merge(['placeholder' => $label])->merge(['value' => old($name)]) }}>
+        {{ $attributes->merge(['value' => old($name)]) }}>
         @error($name)
         <span class="text-danger">{{ $message }}</span>
         @enderror

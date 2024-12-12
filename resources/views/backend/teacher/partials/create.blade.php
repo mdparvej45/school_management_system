@@ -125,7 +125,7 @@
                                     is-invalid
                                 @enderror"
                                     name="present_address" style="height
-                                    57px" placeholder="Presant Address"></textarea>
+                                    57px"></textarea>
                                 @error('present_address')
                                     <span class="text-danger"></span>
                                 @enderror                            
@@ -137,7 +137,7 @@
                                     is-invalid
                                 @enderror"
                                     name="parmanent_address" style="height
-                                    57px" placeholder="Parmanent Address"></textarea>
+                                    57px"></textarea>
                                 @error('parmanent_address')
                                     <span class="text-danger"></span>
                                 @enderror  

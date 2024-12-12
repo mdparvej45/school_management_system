@@ -27,8 +27,11 @@ class StudentController extends Controller
     public function create()
     {
         $classData = DB::table('institute_classes')->first();
-        $find = json_decode($classData->name, true);
-        // dd($find['play']);
+        $classes = json_decode($classData->name, true);
+        $sections = json_decode($classData->section, true);
+        $groups = json_decode($classData->group, true);
+
+        // dd($classes['play']);
         $guardians = [
             'Grand mother',
             'Grand daughter',
@@ -59,7 +62,7 @@ class StudentController extends Controller
             'Watchman',
             'Others',
         ];
-        return view('backend.student.partials.create', compact('guardians'));
+        return view('backend.student.partials.create', compact('guardians', 'classes', 'sections', 'groups'));
     }
 
     /**
@@ -67,8 +70,9 @@ class StudentController extends Controller
      */
     public function store(StudentRequest $request)
     {
+        // dd($request);
         DB::table('users')->insert([
-            'role' => 'Teacher',
+            'role' => 'Student',
             'unique_id' => $request->unique_id,
             'name' => $request->name_en,
             'email' => $request->email,
@@ -77,30 +81,38 @@ class StudentController extends Controller
         ]);
         try {
             $user = User::where('unique_id', $request->unique_id)->firstOrFail(); // Will throw an exception if no user found
-            DB::table('teachers')->insert([
+            DB::table('students')->insert([
                 'user_id' => $user->id,
                 'unique_id' => $request->unique_id,
                 'name_en' => $request->name_en,
                 'name_bn'=> $request->name_bn,
-                'qualification'=> $request->qualification,
-                'designation'=> $request->designation,
-                'assign_class'=> $request->assign_class,
-                'assign_section' => $request->assign_section,
-                'department'=> $request->department,
-                'father_name'=> $request->father_name,
-                'mother_name'=> $request->mother_name,
-                'gender'=> $request->gender,
-                'religion'=> $request->religion,
-                'mobile'=> $request->mobile,
-                'dob'=> $request->dob,
-                'date_of_join' => $request->date_of_join,
-                'married_status' => $request->married_status,
-                'marriage_date' => $request->marriage_date,
+                'class' => $request->class,
+                'section' => $request->section,
+                'admission_fee' => $request->admission_fee,
+                'roll' => $request->roll,
+                'group' => $request->group,
+                'scholarship' => $request->scholarship,
+                'admission_session' => $request->admission_session,
+                'admission_year' => $request->admission_year,
+                'father_name_en' => $request->father_name_en,
+                'father_name_bn' => $request->father_name_bn,
+                'father_mobile' => $request->father_mobile,
+                'mother_name_en' => $request->mother_name_en,
+                'mother_name_bn' => $request->mother_name_bn,
+                'mother_mobile' => $request->mother_mobile,
+                'father_occ' => $request->father_occ,
+                'mother_occ' => $request->mother_occ,
+                'gender' => $request->gender,
+                'religion' => $request->religion,
+                'nationality' => $request->nationality,
                 'email' => $request->email,
-                'salary' => $request->salary,
-                'blood_group' => $request->blood_group,
-                'present_address'=> $request->present_address,
+                'dob' => $request->dob,
+                'guardian_name' => $request->guardian_name,
+                'guardian_occ' => $request->guardian_occ,
+                'guardian_mobile' => $request->guardian_mobile,
+                'present_address' => $request->present_address,
                 'parmanent_address' => $request->parmanent_address,
+                'about' => $request->about,
                 'status' => 'Unapproved', //For status
             ]);
             return back();

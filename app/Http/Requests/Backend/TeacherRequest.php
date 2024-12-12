@@ -22,6 +22,7 @@ class TeacherRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'unique_id' => 'sometimes|string|max:255',
             'image' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif|max:2048', //nullable
             'name_en' => 'sometimes|string|max:255',
             'name_bn'=> 'sometimes|string|max:255',
@@ -39,7 +40,7 @@ class TeacherRequest extends FormRequest
             'date_of_join' => 'sometimes|date',
             'married_status' => 'nullable|string|max:255', //nullable
             'marriage_date' => 'nullable|string|max:255', //nullable
-            'email' => 'sometimes|nullable|email|unique:teachers,email', //nullable
+            'email' => 'sometimes|nullable|email|unique:users,email', //nullable
             'salary' => 'sometimes|numeric',
             'blood_group' => 'nullable|string|max:255', //nullable
             'present_address'=> 'nullable|string|max:255', //nullable

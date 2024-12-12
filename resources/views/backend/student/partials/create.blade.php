@@ -13,9 +13,6 @@
                     @csrf
                     @method('POST')
                     <div class="row gy-4">
-                        @php
-                        $list = ['hello', 'three']
-                        @endphp
                         <div class="row mt-4">
                             <div class="col-md-4 h-25">
                                 <x-backend.forms.image-input class="" label="Photo" id="photo" name="image" />
@@ -32,8 +29,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <x-backend.forms.select name="class" id="class" label="Class" required placeholder="Choise Class..." >
-                                            @forelse ($list as $item)
-                                            <option value="1">2024-25</option>
+                                            @forelse ($classes as $class)
+                                            <option value="{{ $class }}">{{ $class }}</option>
                                             @empty
                                             <option>No Class Found</option>
                                             @endforelse
@@ -41,8 +38,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <x-backend.forms.select name="section" id="section" label="Section" required placeholder="Choise Section..." >
-                                            @forelse ($list as $item)
-                                            <option value="1">2024-25</option>
+                                            @forelse ($sections as $section)
+                                            <option value="{{ $section }}">{{ $section }}</option>
                                             @empty
                                             <option>No Section Found</option>
                                             @endforelse
@@ -60,10 +57,11 @@
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="group" id="group" required label="Group" placeholder="Choise Group..." >
-                                    <option value="General">General</option>
-                                    <option value="Science">Science</option>
-                                    <option value="Business studies">Business Studies</option>
-                                    <option value="Humanities">Humanities</option>
+                                    @forelse ($groups as $group)
+                                            <option value="{{ $group }}">{{ $group }}</option>
+                                            @empty
+                                            <option>No Group Found</option>
+                                            @endforelse
                                 </x-backend.forms.select>
                             </div>
                         </div>
@@ -151,7 +149,9 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="email" type="text" label="Email" ></x-backend.forms.input>                           
+                                <x-backend.forms.input name="email" type="text" label="Email" ></x-backend.forms.input>   
+                                <x-backend.forms.input name="unique_id" type="text" hidden value="{{'STUD' . random_int(1000000, 9999999) }}" label="Email" ></x-backend.forms.input>
+                        
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.input name="dob" type="date" required label="Date of Birth" ></x-backend.forms.input>                           
@@ -162,7 +162,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="guardian_occupation" type="text" label="Guardian Occupation" ></x-backend.forms.input>                           
+                                <x-backend.forms.input name="guardian_occ" type="text" label="Guardian Occupation" ></x-backend.forms.input>                           
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.input name="guardian_mobile" type="number" label="Guardian Mobile" ></x-backend.forms.input>                           

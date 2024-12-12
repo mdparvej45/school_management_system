@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->unique(); // Ensure one-to-one
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('unique_id')->unique();
+            $table->string('image')->nullable();
             $table->string('name_en');
             $table->string('name_bn');
             $table->string('qualification')->nullable(); //nullable
@@ -35,8 +36,9 @@ return new class extends Migration
             $table->integer('salary');
             $table->string('email')->nullable();; 
             $table->string('blood_group')->nullable(); //nullable
-            $table->string('present_address')->nullable();//nullable
-            $table->string('parmanent_address')->nullable();//nullable
+            $table->longText('present_address')->nullable();//nullable
+            $table->longText('parmanent_address')->nullable();//nullable
+            $table->longText('about')->nullable();//nullable
             $table->enum('status', ['Unapproved', 'Active', 'Inactive'])->default('Unapproved');
             $table->timestamps();
             

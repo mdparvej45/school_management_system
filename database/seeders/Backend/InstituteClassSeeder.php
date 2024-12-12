@@ -33,7 +33,7 @@ class InstituteClassSeeder extends Seeder
                     'twelve' => 'Twelve',
                 ]),
                 'section' => json_encode([
-                    'none' => 'None',
+                    'all' => 'All',
                     'a ' => 'A',
                     'b' => 'B',
                 ]),

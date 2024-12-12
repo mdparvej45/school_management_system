@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'role' => 'Superadmin',
-                'unique_id' => config('app.name') . '-SUPA-' . random_int(100000, 999999),
+                'unique_id' => 'SUPA' . random_int(1000000, 9999999),
                 'name' => 'Superadmin',
                 'email' => 'superadmin@gmail.com',
                 'email_verified_at' => now(),
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'role' => 'Principle',
-                'unique_id' => config('app.name') . '-PRIN-' . random_int(100000, 999999),
+                'unique_id' => 'PRIN' . random_int(1000000, 9999999),
                 'name' => 'Principle',
                 'email' => 'principle@gmail.com',
                 'email_verified_at' => now(),
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'role' => 'Teacher',
-                'unique_id' => config('app.name') . '-TECH-' . random_int(100000, 999999),
+                'unique_id' => 'TECH' . random_int(1000000, 9999999),
                 'name' => 'Teacher',
                 'email' => 'teacher@gmail.com',
                 'email_verified_at' => now(),
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'role' => 'Accountant',
-                'unique_id' => config('app.name') . '-ACCT-' . random_int(100000, 999999),
+                'unique_id' => 'ACCT' . random_int(1000000, 9999999),
                 'name' => 'Accountant',
                 'email' => 'accountant@gmail.com',
                 'email_verified_at' => now(),
@@ -61,7 +61,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'role' => 'Operator',
-                'unique_id' => config('app.name') . '-OPER-' . random_int(100000, 999999),
+                'unique_id' => 'OPER' . random_int(1000000, 9999999),
                 'name' => 'Operator',
                 'email' => 'operator@gmail.com',
                 'email_verified_at' => now(),
@@ -72,7 +72,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'role' => 'Student',
-                'unique_id' => config('app.name') . '-STUD-' . random_int(100000, 999999),
+                'unique_id' => 'STUD' . random_int(1000000, 9999999),
                 'name' => 'Student',
                 'email' => 'student@gmail.com',
                 'email_verified_at' => now(),

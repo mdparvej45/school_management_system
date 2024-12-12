@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Backend\Student;
 use App\Models\Backend\Teacher;
 // use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
@@ -48,5 +49,10 @@ class User extends Authenticatable
 
     public function teacher(){
         return $this->hasOne(Teacher::class);
+    }
+
+
+    public function student(){
+        return $this->hasOne(Student::class);
     }
 }

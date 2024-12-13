@@ -43,6 +43,7 @@
                     </thead>
                     <tbody>
                       @forelse ( $teachers as $key => $teacher)
+                     
                       <tr>
                             <th scope="row">
                                 <div class="form-check">
@@ -53,7 +54,7 @@
                             <td>
                                 <div class="d-flex gap-1 align-items-center">
                                     <div class="flex-shrink-0">
-                                        <img src="{{ asset('backend/assets/images/avatar.png') }}" alt="" class=" border border-primary avatar-xs rounded-circle" />
+                                        <img src="{{ useImage($teacher->image) }}" alt="" class=" border border-primary avatar-xs rounded-circle" />
                                     </div>
                                     <div class="">
                                         {{ $teacher->name_en }}
@@ -95,8 +96,11 @@
                             </td>
 
                     </tr>
+                    
                       @empty
-                          <p>Lorem, ipsum dolor.</p>
+                          <tr>
+                            <p>Lorem, ipsum dolor.</p>
+                          </tr>
                       @endforelse
                     </tbody>
                 </table>

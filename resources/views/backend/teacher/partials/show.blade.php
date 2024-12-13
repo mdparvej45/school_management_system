@@ -3,14 +3,14 @@
 <x-backend.ui.breadcrumbs :list="['Dashboard', 'Teacher', 'Show']" ></x-backend.ui.breadcrumbs>
 <div class="profile-foreground position-relative mx-n4 mt-n4">
     <div class="profile-wid-bg">
-        <img src="{{ asset('backend/assets/images/avatar.png') }}" alt="" class="profile-wid-img" />
+        <img src="{{ useImage($teacher->image) }}" alt="" class="profile-wid-img" />
     </div>
 </div>
 <div class="pt-4 mb-4 mb-lg-3 pb-lg-4">
     <div class="row g-4">
         <div class="col-auto">
             <div class="avatar-lg">
-                <img src="{{ asset('backend/assets/images/avatar.png') }}" alt="user-img" class="img-thumbnail rounded-circle" />
+                <img src="{{ useImage($teacher->image) }}" alt="user-img" class="img-thumbnail rounded-circle" />
             </div>
         </div>
         <!--end col-->

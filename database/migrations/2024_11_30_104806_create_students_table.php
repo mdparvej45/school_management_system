@@ -16,13 +16,13 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->unique(); // Ensure one-to-one
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('unique_id')->unique();
+            $table->integer('roll');
             $table->string('image')->nullable();
             $table->string('name_en');
             $table->string('name_bn');
             $table->string('class');
             $table->string('section');
-            $table->string('admission_fee')->nullable();
-            $table->string('roll');
+            $table->integer('admission_fee')->nullable();
             $table->string('group');
             $table->string('scholarship')->nullable();
             $table->string('admission_session');
@@ -35,16 +35,16 @@ return new class extends Migration
             $table->string('mother_mobile')->nullable();
             $table->string('father_occ')->nullable();
             $table->string('mother_occ')->nullable();
-            $table->string('blood_group')->nullable();
-            $table->string('gender');
-            $table->string('religion');
+            $table->enum('blood_group', ['A(+)','A(-)','B(+)','B(-)','AB(+)','AB(-)','O(+)','O(-)'])->nullable();
+            $table->enum('gender', ['Male','Female']);
+            $table->enum('religion', ['Islam','Hinduisum','Buddist','Chirstian','Others']);
             $table->string('nationality')->nullable();
             $table->string('email')->nullable();
             $table->date('dob');
             $table->string('guardian_name')->nullable();
             $table->string('guardian_occ')->nullable();
             $table->integer('guardian_mobile')->nullable();
-            $table->string('grardian_relation')->nullable();
+            $table->string('guardian_relation')->nullable();
             $table->longText('present_address')->nullable();
             $table->longText('parmanent_address')->nullable();
             $table->longText('about')->nullable();

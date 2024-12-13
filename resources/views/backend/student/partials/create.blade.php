@@ -53,7 +53,7 @@
                                 <x-backend.forms.input name="admission_fee" type="number" readonly label="Admission Fee" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.input name="roll" type="text" required label="Roll" ></x-backend.forms.input>
+                                <x-backend.forms.input name="roll" type="number" required label="Roll" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="group" id="group" required label="Group" placeholder="Choise Group..." >
@@ -141,6 +141,7 @@
                                     <option value="Hinduisum">Hinduisum</option>
                                     <option value="Buddist">Buddist</option>
                                     <option value="Chirstian">Chirstian</option>
+                                    <option value="Others">Others</option>
                                 </x-backend.forms.select>
                             </div>  
                             <div class="col-md-4">
@@ -183,7 +184,7 @@
                                     is-invalid
                                 @enderror"
                                     name="present_address" style="height
-                                    57px" placeholder="Presant Address"></textarea>
+                                    57px" ></textarea>
                                 @error('present_address')
                                     <span class="text-danger"></span>
                                 @enderror                            
@@ -195,7 +196,7 @@
                                     is-invalid
                                 @enderror"
                                     name="parmanent_address" style="height
-                                    57px" placeholder="Parmanent Address"></textarea>
+                                    57px" ></textarea>
                                 @error('parmanent_address')
                                     <span class="text-danger"></span>
                                 @enderror  
@@ -209,7 +210,7 @@
                                 is-invalid
                             @enderror"
                                 name="about" style="height
-                                57px" placeholder="Presant Address"></textarea>
+                                57px"></textarea>
                             @error('about')
                                 <span class="text-danger"></span>
                             @enderror                            

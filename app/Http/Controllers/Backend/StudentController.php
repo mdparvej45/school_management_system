@@ -18,7 +18,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $students = DB::table('students')->select('id', 'unique_id', 'roll', 'image', 'name_en', 'name_bn', 'father_name_en', 'father_name_bn', 'mother_name_en', 'mother_name_bn', 'dob', 'religion','admission_session', 'blood_group', 'admission_fee', 'scholarship', 'group', 'section','status' )->orderBy('roll', 'desc')->get();
+        return view('backend.student.index', compact('students'));
     }
 
     /**
@@ -84,6 +85,7 @@ class StudentController extends Controller
             DB::table('students')->insert([
                 'user_id' => $user->id,
                 'unique_id' => $request->unique_id,
+                'image' => saveImage($request->image, 'backend/student/' . $request->unique_id, 'profile'),
                 'name_en' => $request->name_en,
                 'name_bn'=> $request->name_bn,
                 'class' => $request->class,
@@ -110,6 +112,7 @@ class StudentController extends Controller
                 'guardian_name' => $request->guardian_name,
                 'guardian_occ' => $request->guardian_occ,
                 'guardian_mobile' => $request->guardian_mobile,
+                'guardian_relation' => $request->guardian_relation,
                 'present_address' => $request->present_address,
                 'parmanent_address' => $request->parmanent_address,
                 'about' => $request->about,

@@ -18,7 +18,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = DB::table('teachers')->select('id', 'name_en', 'designation', 'unique_id', 'qualification', 'mobile', 'email', 'blood_group', 'status')->orderBy('id', 'desc')->get();
+        $teachers = DB::table('teachers')->select('id', 'name_en', 'designation', 'unique_id', 'qualification', 'mobile', 'email', 'blood_group', 'status','image')->orderBy('id', 'desc')->get();
         return view('backend.teacher.index', compact('teachers'));
     }
 
@@ -50,6 +50,7 @@ class TeacherController extends Controller
             DB::table('teachers')->insert([
                 'user_id' => $user->id,
                 'unique_id' => $request->unique_id,
+                'image' => saveImage($request->image, 'backend/teacher/' . $request->unique_id, 'profile'),
                 'name_en' => $request->name_en,
                 'name_bn'=> $request->name_bn,
                 'qualification'=> $request->qualification,

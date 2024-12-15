@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('married_status')->nullable();//nullable
             $table->string('marriage_date')->nullable(); //nullable
             $table->integer('salary');
-            $table->string('email')->nullable();; 
+            $table->string('email')->nullable();
             $table->string('blood_group')->nullable(); //nullable
             $table->longText('present_address')->nullable();//nullable
             $table->longText('parmanent_address')->nullable();//nullable

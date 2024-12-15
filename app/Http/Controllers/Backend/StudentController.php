@@ -18,7 +18,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = DB::table('students')->select('id', 'unique_id', 'roll', 'image', 'name_en', 'name_bn', 'father_name_en', 'father_name_bn', 'mother_name_en', 'mother_name_bn', 'dob', 'religion','admission_session', 'blood_group', 'admission_fee', 'scholarship', 'group', 'section','status' )->orderBy('roll', 'desc')->get();
+        $students = DB::table('students')->select('id', 'unique_id', 'roll', 'image', 'name_en', 'name_bn', 'father_name_en', 'father_name_bn', 'mother_name_en', 'mother_name_bn', 'dob', 'religion','admission_session', 'blood_group', 'admission_fee', 'scholarship', 'group', 'section','status' )->orderBy('roll', 'asc')->get();
         return view('backend.student.index', compact('students'));
     }
 
@@ -129,7 +129,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return view('backend.student.partials.show', compact('student'));
     }
 
     /**

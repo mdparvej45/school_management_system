@@ -23,8 +23,9 @@ return new class extends Migration
             $table->string('class');
             $table->string('section');
             $table->integer('admission_fee')->nullable();
+            $table->integer('tution_fee')->nullable();
             $table->string('group');
-            $table->string('scholarship')->nullable();
+            $table->integer('scholarship')->nullable();
             $table->string('admission_session');
             $table->string('admission_year');
             $table->string('father_name_en')->nullable();

@@ -28,7 +28,7 @@
         type="file" hidden>
         <img class="w-100 border border-1 border-primary {{ $class }}" style="{{ $style }}"
             id="live-{{ $id }}"
-            src="{{ $image ? useImage($image) : asset('backend/assets/images/placeholder.jpg') }}">
+            src="{{ $image ? useImage($image) : asset('backend/assets/images/avatar1.jpg') }}">
     </label>
 
     @error($name)

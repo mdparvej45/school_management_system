@@ -1,5 +1,6 @@
 <?php 
 
+use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\Backend\StudentController;
 use App\Http\Controllers\Backend\TeacherController;
 use App\Http\Controllers\ProfileController;
@@ -19,5 +20,6 @@ prefix('admin')->group(function () {
     Route::resource('teacher', TeacherController::class);
     Route::patch('/teacher//{id}/status', [TeacherController::class, 'status'])->name('teacher.status');
     Route::resource('student', StudentController::class);
+    Route::resource('employee', EmployeeController::class);
 
 });

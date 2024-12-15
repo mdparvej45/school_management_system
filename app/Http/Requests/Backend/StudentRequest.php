@@ -29,9 +29,10 @@ class StudentRequest extends FormRequest
             'class' => 'sometimes|string|max:255', 
             'section'=> 'sometimes|string|max:255', 
             'admission_fee'=> 'nullable|integer',
+            'tution_fee' => 'nullable|integer',
             'roll' => 'sometimes|integer|max:255', 
             'group'=> 'sometimes|string|max:255',
-            'scholarship'=> 'nullable|string|max:255', //nullable
+            'scholarship'=> 'nullable|integer', //nullable
             'admission_session' => 'sometimes|string|max:255',
             'admission_year' => 'sometimes|string|max:255',
             'father_name_en' => 'nullable|string|max:255', //nullable

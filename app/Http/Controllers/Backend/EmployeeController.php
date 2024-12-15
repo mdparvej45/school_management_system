@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\Backend\InstituteClass;
+use App\Http\Requests\Backend\EmployeeRequest;
 use Illuminate\Http\Request;
+use App\Models\Backend\Employee;
+use App\Http\Controllers\Controller;
 
-class InstituteClassController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,13 +22,13 @@ class InstituteClassController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.employee.partials.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
         //
     }
@@ -34,7 +36,7 @@ class InstituteClassController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(InstituteClass $instituteClass)
+    public function show(Employee $employee)
     {
         //
     }
@@ -42,7 +44,7 @@ class InstituteClassController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(InstituteClass $instituteClass)
+    public function edit(Employee $employee)
     {
         //
     }
@@ -50,7 +52,7 @@ class InstituteClassController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, InstituteClass $instituteClass)
+    public function update(EmployeeRequest $request, Employee $employee)
     {
         //
     }
@@ -58,7 +60,7 @@ class InstituteClassController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(InstituteClass $instituteClass)
+    public function destroy(Employee $employee)
     {
         //
     }

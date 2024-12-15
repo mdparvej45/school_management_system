@@ -67,7 +67,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="scholarship" type="text" label="Scholarship" ></x-backend.forms.input>
+                                <x-backend.forms.input name="scholarship" type="number" label="Scholarship" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="admission_session" required id="session" label="Admission Session" placeholder="Choise Admission Session..." >

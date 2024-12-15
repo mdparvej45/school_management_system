@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Models;
+use App\Models\Backend\Employee;
+use App\Models\Backend\Staff;
 use App\Models\Backend\Student;
-use App\Models\Backend\Teacher;
 // use Illuminate\Database\Eloquent\Model;
+use App\Models\Backend\Teacher;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -54,5 +56,10 @@ class User extends Authenticatable
 
     public function student(){
         return $this->hasOne(Student::class);
+    }
+
+
+    public function employee(){
+        return $this->hasOne(Employee::class);
     }
 }

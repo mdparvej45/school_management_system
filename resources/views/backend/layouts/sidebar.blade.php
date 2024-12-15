@@ -304,6 +304,11 @@
                         <i class="ri-dashboard-2-line"></i> <span>Teacher Information</span>
                     </a>
                 </li> 
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('employee.create') }}"  role="button">
+                        <i class="ri-dashboard-2-line"></i> <span>Employee</span>
+                    </a>
+                </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('teacher.edit') }}"  role="button">
                         <i class="ri-dashboard-2-line"></i> <span>Teacher Edit</span>

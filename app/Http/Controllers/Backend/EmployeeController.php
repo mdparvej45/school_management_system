@@ -33,18 +33,32 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeRequest $request)
     {
-        // dd();
+        $unique_id = 'EMPL' . random_int(1000000, 9999999);
         if(isset($request->designation)){
             DB::table('users')->insert([
                 'role' => 'Employee',
-                'unique_id' => 'EMPL' . random_int(1000000, 9999999),
+                'unique_id' => $unique_id,
                 'name' => $request->name,
                 'email' => $request->email,
                 'mobile' => $request->mobile,
                 'password' => Hash::make( 'password123'),
             ]);
+            $user = User::where('unique_id', $unique_id)->firstOrFail();
             DB::table('employees')->insert([
-                
+                'user_id' => $user->id,
+                'unique_id' => $user->unique_id,
+                'image' => $request->image,
+                'name' => $request->name,
+                'blood_group' => $request->blood_group,
+                'designation' => $request->designation,
+                'qualification'=> $request->qualification,
+                'department'=> $request->department,
+                'monthly_salary'=> $request->monthly_salary,
+                'father_name' => $request->father_name,
+                'mother_name'=> $request->mother_name,
+                'gender' => $request->gender,
+                'religion' => $request->religion,
+
             ]);
         }else{
             DB::table('users')->insert([

@@ -1,6 +1,7 @@
 @php
     $label = $attributes->get('label');
     $required = $attributes->get('required');
+    $id = $attributes->get('id');
     $name = $attributes->get('name');
     $class = $attributes->get('class');
     $class = str($class)->contains('dotted-border') ? $class : 'form-control px-3 py-2 border-focus-2' . $class;
@@ -29,7 +30,7 @@
         @enderror
     </div>
     @else
-    <input class="{{ $class }} 
+    <input id="{{ $id }}" class="{{ $class }} 
         @error($name)
          is-invalid
         @enderror"

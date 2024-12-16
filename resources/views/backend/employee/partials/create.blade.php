@@ -20,45 +20,52 @@
                             <div class="col-md-8">
                                 <div class="row mb-4">
                                     <div class="col-md-6">
-                                        <x-backend.forms.input name="name" type="text" required label="Name" ></x-backend.forms.input>
+                                        <x-backend.forms.select name="type" id="type" label="Employee Type" placeholder="Choise employee Type..." >
+                                            <option value="Superadmin">Superadmin</option>
+                                            <option value="Principle">Principle</option>
+                                            <option value="Accountant">Accountant</option>
+                                            <option value="Operator">Operator</option>
+                                            <option value="Employee">Employee</option>
+                                        </x-backend.forms.select>
                                     </div>
                                     <div class="col-md-6">
-                                        <x-backend.forms.input name="designation" type="text" required label="Designation" ></x-backend.forms.input>
+                                        <x-backend.forms.input name="card_no" type="text" label="Card No." ></x-backend.forms.input>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <x-backend.forms.select name="blood_group" id="blood" label="Blood Group" placeholder="Choise Blood Group..." >
-                                            <option value="A(+)">A(+)</option>
-                                            <option value="A(-)">A(-)</option>
-                                            <option value="B(+)">B(+)</option>
-                                            <option value="B(-)">B(-)</option>
-                                            <option value="AB(+)">AB(+)</option>
-                                            <option value="AB(-)">AB(-)</option>
-                                            <option value="O(+)">O(+)</option>
-                                            <option value="O(-)">O(-)</option>
-                                        </x-backend.forms.select>
+                                        <x-backend.forms.input name="name" type="text" required label="Name" ></x-backend.forms.input>
                                     </div>
                                     <div class="col-md-6">
-                                        <x-backend.forms.input name="qualification" type="text" label="Qualification" ></x-backend.forms.input>
+                                        <x-backend.forms.input name="designation" id="designation" type="text" label="Designation" disabled ></x-backend.forms.input>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="department" type="text" label="Department" ></x-backend.forms.input>
+                                <x-backend.forms.input name="qualification" type="text" label="Qualification" ></x-backend.forms.input>
+                      
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.input name="monthly_salary" type="number" required label="Monthly Salary" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
-                                <x-backend.forms.input name="father_name" type="text" label="Father Name" ></x-backend.forms.input>
+                                <x-backend.forms.select name="blood_group" id="blood" label="Blood Group" placeholder="Choise Blood Group..." >
+                                    <option value="A(+)">A(+)</option>
+                                    <option value="A(-)">A(-)</option>
+                                    <option value="B(+)">B(+)</option>
+                                    <option value="B(-)">B(-)</option>
+                                    <option value="AB(+)">AB(+)</option>
+                                    <option value="AB(-)">AB(-)</option>
+                                    <option value="O(+)">O(+)</option>
+                                    <option value="O(-)">O(-)</option>
+                                </x-backend.forms.select>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="mother_name" type="text" label="Father Name" ></x-backend.forms.input>
+                                <x-backend.forms.input name="department" type="text" label="Department" ></x-backend.forms.input>
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="gender" id="gender" label="Gender" required placeholder="Choise Gender..." >
@@ -96,8 +103,21 @@
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.input name="dob" type="date" required label="Date of Birth" ></x-backend.forms.input>
-                                <x-backend.forms.input name="unique_id" type="text" hidden value="{{'STUD' . random_int(1000000, 9999999) }}" label="Email" ></x-backend.forms.input>
                             </div>   
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <x-backend.forms.input name="father_name" type="text" label="Father Name" ></x-backend.forms.input>
+                            </div>
+                            <div class="col-md-4">
+                                <x-backend.forms.input name="mother_name" type="text" label="Father Name" ></x-backend.forms.input>
+                            </div>
+                            <div class="col-md-4">
+                                <x-backend.forms.select name="married_status" id="married_status" label="Married Status" placeholder="Choise Married Status..." >
+                                    <option value="Marrid">Marrid</option>
+                                    <option value="Unmarrid">Unmarrid</option>
+                                </x-backend.forms.select>
+                            </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
@@ -153,4 +173,23 @@
     </div>
     <!--end col-->
 </div>
-@endsection
+@push('customJs')
+<script>
+    // Get references to the dropdown and input field
+    const dropdown = document.getElementById('dropdown');
+    const textInput = document.getElementById('designation');
+
+    // Add an event listener to the dropdown
+    dropdown.addEventListener('change', () => {
+      const selectedValue = dropdown.value; // Get the selected option value
+
+      // Enable or disable the input field based on the dropdown value
+      if (selectedValue == 'Employee') {
+        textInput.removeAttribute('disabled'); // Enable the input field
+      } else if (selectedValue == 'Superadmin' || 'Principle' || 'Accountant' || 'Operator') {
+        textInput.setAttribute('disabled', 'true'); // Disable the input field
+      }
+    });
+  </script>
+@endpush
+@endsection 

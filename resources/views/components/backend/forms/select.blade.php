@@ -14,7 +14,7 @@
             @endif
         </label>
     @endif
-    <select {{ $attributes->merge(['class' => 'form-select mb-3'])->merge() }} aria-label="Default select example" >
+    <select {{ $attributes->merge(['class' => 'form-select mb-3'])->merge() }} aria-label="Default select example" id="{{ $id }}" >
         <option disabled selected value="">{{ $placeholder }}</option>
         {{ $slot }}
     </select>

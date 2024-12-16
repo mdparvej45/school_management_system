@@ -24,9 +24,10 @@ class EmployeeRequest extends FormRequest
         return [
             'unique_id' => 'sometimes|string|max:255',
             'image' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif|max:2048', //nullable
+            'type' => 'sometimes|string|max:255',
             'name' => 'sometimes|string|max:255',
             'blood_group' => 'nullable|string|max:255', //nullable
-            'designation' => 'sometimes|string|max:255',
+            'designation' => 'nullable|string|max:255',
             'qualification' => 'nullable|string|max:255',
             'department' => 'nullable|string|max:255',
             'monthly_salary' => 'sometimes|integer',

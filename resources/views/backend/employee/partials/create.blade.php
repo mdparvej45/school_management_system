@@ -20,7 +20,7 @@
                             <div class="col-md-8">
                                 <div class="row mb-4">
                                     <div class="col-md-6">
-                                        <x-backend.forms.select name="type" id="type" label="Employee Type" placeholder="Choise employee Type..." >
+                                        <x-backend.forms.select name="type" id="dropdown" label="Employee Type" placeholder="Choise employee Type..." >
                                             <option value="Superadmin">Superadmin</option>
                                             <option value="Principle">Principle</option>
                                             <option value="Accountant">Accountant</option>
@@ -187,7 +187,7 @@
       if (selectedValue == 'Employee') {
         textInput.removeAttribute('disabled'); // Enable the input field
       } else if (selectedValue == 'Superadmin' || 'Principle' || 'Accountant' || 'Operator') {
-        textInput.setAttribute('disabled', 'true'); // Disable the input field
+        textInput.setAttribute('disabled', 'true');
       }
     });
   </script>

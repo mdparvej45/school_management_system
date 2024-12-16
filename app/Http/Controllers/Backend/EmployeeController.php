@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\EmployeeRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Backend\Employee;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\Backend\EmployeeRequest;
 
 class EmployeeController extends Controller
 {
@@ -30,7 +33,29 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeRequest $request)
     {
-        //
+        // dd();
+        if(isset($request->designation)){
+            DB::table('users')->insert([
+                'role' => 'Employee',
+                'unique_id' => 'EMPL' . random_int(1000000, 9999999),
+                'name' => $request->name,
+                'email' => $request->email,
+                'mobile' => $request->mobile,
+                'password' => Hash::make( 'password123'),
+            ]);
+            DB::table('employees')->insert([
+                
+            ]);
+        }else{
+            DB::table('users')->insert([
+                'role' => $request->type,
+                'unique_id' => strtoupper(substr($request->type, 0, 4)) . random_int(1000000, 9999999),
+                'name' => $request->name,
+                'email' => $request->email,
+                'mobile' => $request->mobile,
+                'password' => Hash::make('password123'),
+            ]);
+        }
     }
 
     /**

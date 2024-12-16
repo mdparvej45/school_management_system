@@ -22,7 +22,7 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'role' => 'sometimes|in:Superadmin, Principle, Teacher, Accountant, Operator, Student',
+            'role' => 'sometimes|in:Superadmin, Principle, Teacher, Accountant, Operator, Student, Employee',
             'name' => 'sometimes|string|max:255',
             'email' => 'sometimes|email|unique:users,email',
             'mobile' => 'sometimes|digits:11',

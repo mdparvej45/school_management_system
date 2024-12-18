@@ -38,7 +38,7 @@ return new class extends Migration
             $table->longText('present_address')->nullable();
             $table->longText('permanent_address')->nullable();
             $table->longText('about');
-            $table->string('status');
+            $table->enum('status', ['Unapproved', 'Active', 'Inactive'])->default('Unapproved');
             $table->timestamps();
         });
     }

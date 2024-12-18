@@ -17,7 +17,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = DB::table('employees')->select('id', 'image', 'name', 'unique_id', 'blood_group', 'designation', 'qualification', 'mobile', 'email','nid', 'join_date', 'monthly_salary', 'status')->orderBy('id', 'desc')->get();
+        return view('backend.employee.index', compact('employees'));
     }
 
     /**
@@ -47,7 +48,7 @@ class EmployeeController extends Controller
             DB::table('employees')->insert([
                 'user_id' => $user->id,
                 'unique_id' => $user->unique_id,
-                'image' => $request->image,
+                'image' => saveImage($request->image, 'backend/employee/' . $request->unique_id, 'profile'),
                 'name' => $request->name,
                 'blood_group' => $request->blood_group,
                 'designation' => $request->designation,
@@ -58,6 +59,17 @@ class EmployeeController extends Controller
                 'mother_name'=> $request->mother_name,
                 'gender' => $request->gender,
                 'religion' => $request->religion,
+                'nationality'=> $request->nationality,
+                'nid'=> $request->nid,
+                'mobile'=> $request->mobile,
+                'email'=> $request->email,
+                'join_date'=> $request->join_date,
+                'dob'=> $request->dob,
+                'married_status'=> $request->married_status,
+                'present_address'=> $request->present_address,
+                'permanent_address' => $request->permanent_address,
+                'about' => $request->about,
+                'status' => 'Unapproved', //For status
 
             ]);
         }else{
@@ -70,6 +82,7 @@ class EmployeeController extends Controller
                 'password' => Hash::make('password123'),
             ]);
         }
+        return back();
     }
 
     /**

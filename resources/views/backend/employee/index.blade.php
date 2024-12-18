@@ -1,12 +1,12 @@
 @extends('backend.layouts.app')
 @section('content')
-<x-backend.ui.breadcrumbs :list="['Dashboard', 'Teacher', 'All Student Information']" ></x-backend.ui.breadcrumbs>
+<x-backend.ui.breadcrumbs :list="['Dashboard', 'Teacher', 'All Teacher Information']" ></x-backend.ui.breadcrumbs>
 <div class="row text-center">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header bg-primary d-flex" id="hello" >
                 <div class="me-auto">
-                    <h5 class="card-title text-white fw-semibold mt-2" >Student Information</h5>
+                    <h5 class="card-title text-white fw-semibold mt-2" >Teacher Information</h5>
                 </div>
                 <div class="ms-auto">
                     <input type="text" class="form-control form-control-sm w-100" placeholder="Search">
@@ -21,90 +21,84 @@
                                     <input class="form-check-input fs-15" type="checkbox" id="checkAll" value="option">
                                 </div>
                             </th>
-                            <th data-ordering="false">ROLL~ID</th>
+                            <th data-ordering="false">#</th>
                             <th data-ordering="false">
                                 PHOTO~NAME
                             </th>
                             <th data-ordering="false">
-                                FATHER~MOTHER
+                                ID~BLOOD
                             </th>
                             <th data-ordering="false">
-                                D.O.B~RELIGION
+                                DESIGNATION~QUALIFICATION
                             </th>
-                        
                             <th data-ordering="false">
-                                SESSION~BLOOD
+                                MOBILE~EMAIL~NID
                             </th>
-                            <th data-ordering="false">TUITION FEE~SCHOLARSHIP</th>
-                            <th data-ordering="false">GROUP~SECTION~SHIFT</th>
+                            <th data-ordering="false">
+                                JOIN DATE~SALARY
+                            </th>
                             <th data-ordering="false">
                                 STATUS
                             </th>
-                            <th data-ordering="false">ACTION</th>
+                            <th data-ordering="false">OPTIONS</th>
                         </tr>
                     </thead>
                     <tbody>
-                      @forelse ( $students as $key => $student)
+                      @forelse ( $employees as $key => $employee)
+                     
                       <tr>
                             <th scope="row">
                                 <div class="form-check">
                                     <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
                                 </div>
                             </th>
-                            <td>{{ $student->roll }}
-                                <br/>
-                                {{ $student->unique_id }}
-                            </td>
+                            <td>{{ ++$key }}</td>
                             <td>
-                                {{-- {{ dd($student->image) }} --}}
                                 <div class="d-flex gap-1 align-items-center">
                                     <div class="flex-shrink-0">
-                                        <img src="{{ useImage($student->image) }}" alt="" class=" border border-primary avatar-xs rounded-circle" />
+                                        <img src="{{ useImage($employee->image) }}" alt="" class=" border border-primary avatar-xs rounded-circle" />
                                     </div>
                                     <div class="">
-                                        {{ $student->name_en }}
+                                        {{ $employee->name }}
                                     </div>
                                 </div>
                             </td>
-                            <td>{{ $student->father_name_en }}
+                            <td>{{ $employee->unique_id }}
                                 <br/>
-                                {{ $student->mother_name_en }}
+                               <span class="text-danger"> {{ $employee->blood_group }}</span>
                             </td>
-                            <td>{{ $student->dob }}
+                            <td>{{ $employee->designation }}
                                 <br/>
-                                {{ $student->religion }}
+                                {{ $employee->qualification }}
                             </td>
-                            </td>
-                            <td>{{ $student->admission_session }}
+                            <td>{{ $employee->mobile }}
                                 <br/>
-                              <span class="text-danger">{{ $student->blood_group }}</span>
-                            </td>
-                            <td>{{ $student->admission_fee }}
+                                {{ $employee->email }}
                                 <br/>
-                                {{ $student->scholarship }}
+                                {{ $employee->nid }}
                             </td>
-                            <td>{{ $student->group }}
+                            <td>{{ $employee->join_date }}
                                 <br/>
-                                {{ $student->section }}
+                                {{ $employee->monthly_salary }}
                             </td>
-                                {{-- class="{{ $student->status == 'Unapproved' ? "text-warning" : ($student->status == 'Active' ? "text-success" : "text-danger") }}" --}}
-                                <td><i class="ri-checkbox-blank-circle-fill align-bottom me-2"></i>{{ $student->status }}
+                            <td class="{{ $employee->status == 'Unapproved' ? "text-warning" : ($employee->status == 'Active' ? "text-success" : "text-danger") }}" ><i class="ri-checkbox-blank-circle-fill align-bottom me-2"></i>{{ $employee->status }}
+                            </td>
                             <td>
                                 <div class="dropdown d-inline-block">
                                     <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="ri-more-fill align-middle"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" style="">
-                                        <li><a href="" class="btn btn-success dropdown-item text-success"><i class="ri-eye-fill align-bottom me-2"></i> View</a></li>
-                                        <li><a href="" class="dropdown-item edit-item-btn text-secondary"><i class="ri-pencil-fill align-bottom me-2"></i> Edit</a></li>
+                                        <li><a href="{{ route('employee.show', $employee->id) }}" class="btn btn-success dropdown-item text-success"><i class="ri-eye-fill align-bottom me-2"></i> View</a></li>
+                                        <li><a href="{{ route('employee.edit', $employee->id) }}" class="dropdown-item edit-item-btn text-secondary"><i class="ri-pencil-fill align-bottom me-2"></i> Edit</a></li>
                                         <li>
                                             <form action="" method="post">
                                                 @csrf
                                                 @method('PATCH')
                                            
-                                                    {{-- <x-backend.ui.button type="submit" class="dropdown-item remove-item-btn text-danger">
-                                                        <span class="{{ $teacher->status == 'Unapproved' ? "text-primary" : ($teacher->status == 'Active' ? "text-danger" : "text-success") }}"><i class="{{ $teacher->status == 'Unapproved' ? "ri-close-circle-line" : ($teacher->status == 'Active' ? "ri-close-circle-line" : "ri-checkbox-blank-circle-fill") }} align-bottom me-2"></i> {{ $teacher->status == 'Unapproved' ? "Approve" : ($teacher->status == 'Active' ? "Inactive" : "Active") }}</span>
-                                                    </x-backend.ui.button> --}}
+                                                    <x-backend.ui.button type="submit" class="dropdown-item remove-item-btn text-danger">
+                                                        <span class="{{ $employee->status == 'Unapproved' ? "text-primary" : ($employee->status == 'Active' ? "text-danger" : "text-success") }}"><i class="{{ $employee->status == 'Unapproved' ? "ri-close-circle-line" : ($employee->status == 'Active' ? "ri-close-circle-line" : "ri-checkbox-blank-circle-fill") }} align-bottom me-2"></i> {{ $employee->status == 'Unapproved' ? "Approve" : ($employee->status == 'Active' ? "Inactive" : "Active") }}</span>
+                                                    </x-backend.ui.button>
                                             </form>
                                         </li>
                                     </ul>
@@ -112,8 +106,11 @@
                             </td>
 
                     </tr>
+                    {{-- {{ route('employee.status', $employee->id) }} --}}
                       @empty
-                          <p>Lorem, ipsum dolor.</p>
+                          <tr>
+                            <p>Lorem, ipsum dolor.</p>
+                          </tr>
                       @endforelse
                     </tbody>
                 </table>

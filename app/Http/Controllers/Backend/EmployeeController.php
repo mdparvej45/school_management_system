@@ -90,7 +90,7 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        //
+        return view('backend.employee.partials.show', compact('employee'));
     }
 
     /**
@@ -115,5 +115,23 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         //
+    }
+
+      /**
+     * This is employee active and deactive method.
+     */
+    public function status(Request $employee)
+    {
+       $find = Employee::find($employee->id);
+      if($find->status == 'Unapproved'){
+        Employee::find($employee->id)->update(['status' => 'Active']);
+
+      }elseif($find->status == 'Inactive'){
+        Employee::find($employee->id)->update(['status' => 'Active']);
+      }else{
+        Employee::find($employee->id)->update(['status' => 'Inactive']);
+
+      }
+      return back();
     }
 }

@@ -21,5 +21,7 @@ prefix('admin')->group(function () {
     Route::patch('/teacher//{id}/status', [TeacherController::class, 'status'])->name('teacher.status');
     Route::resource('student', StudentController::class);
     Route::resource('employee', EmployeeController::class);
+    Route::patch('/employee//{id}/status', [EmployeeController::class, 'status'])->name('employee.status');
+
 
 });

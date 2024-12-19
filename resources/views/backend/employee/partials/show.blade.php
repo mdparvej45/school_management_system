@@ -1,27 +1,27 @@
 @extends('backend.layouts.app')
 @section('content')
-<x-backend.ui.breadcrumbs :list="['Dashboard', 'Student', 'Show']" ></x-backend.ui.breadcrumbs>
+<x-backend.ui.breadcrumbs :list="['Dashboard', 'Employee', 'Show']" ></x-backend.ui.breadcrumbs>
 <div class="profile-foreground position-relative mx-n4 mt-n4">
     <div class="profile-wid-bg">
-        <img src="{{ useImage($student->image) }}" alt="" class="profile-wid-img" />
+        <img src="{{ useImage($employee->image) }}" alt="" class="profile-wid-img" />
     </div>
 </div>
 <div class="pt-4 mb-4 mb-lg-3 pb-lg-4">
     <div class="row g-4">
         <div class="col-auto">
             <div class="avatar-lg">
-                <img src="{{ useImage($student->image) }}" alt="user-img" class="img-thumbnail rounded-circle" />
+                <img src="{{ useImage($employee->image) }}" alt="user-img" class="img-thumbnail rounded-circle" />
             </div>
         </div>
         <!--end col-->
         <div class="col">
             <div class="p-2">
-                <h3 class="text-white mb-1">{{ $teacher->name_en }}</h3>
-                <p class="text-white-75">{{ $teacher->unique_id }}</p>
+                <h3 class="text-white mb-1">{{ $employee->name }}</h3>
+                <p class="text-white-75">{{ $employee->unique_id }}</p>
                 <div class="hstack text-white-50 gap-1">
-                    <div class="me-2"><i class="ri-map-pin-user-line me-1 text-white-75 fs-16 align-middle"></i>{{ $student->present_address }}</div>
+                    <div class="me-2"><i class="ri-map-pin-user-line me-1 text-white-75 fs-16 align-middle"></i>{{ $employee->present_address }}</div>
                     <div>
-                        <i class="ri-building-line me-1 text-white-75 fs-16 align-middle"></i>{{ $student->parmanent_address }}
+                        <i class="ri-building-line me-1 text-white-75 fs-16 align-middle"></i>{{ $employee->parmanent_address }}
                     </div>
                 </div>
             </div>
@@ -53,8 +53,8 @@
                     </li>
                 </ul>
                 <div class="flex-shrink-0 btn-group">
-                    <a href="{{ route('student.index') }}" class="btn btn-info"><i class="ri-arrow-go-back-line align-bottom"></i> Back</a>
-                    <a href="{{ route('student.edit', $student) }}" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
+                    <a href="{{ route('employee.index') }}" class="btn btn-info"><i class="ri-arrow-go-back-line align-bottom"></i> Back</a>
+                    <a href="{{ route('employee.edit', $employee) }}" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
                 </div>
             </div>
             <!-- Tab panes -->
@@ -88,7 +88,7 @@
                                                 </div>
                                                 <div class="flex-grow-1 overflow-hidden">
                                                     <p class="mb-1">ID :</p>
-                                                    <h6 class="text-truncate mb-0">{{ 	$student->unique_id }}</h6>
+                                                    <h6 class="text-truncate mb-0">{{ 	$employee->unique_id }}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -100,8 +100,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 overflow-hidden">
-                                                    <p class="mb-1">Name (English) :</p>
-                                                    <h6 class="text-truncate mb-0">{{ 	$student->name_en }}</h6>
+                                                    <p class="mb-1">Name :</p>
+                                                    <h6 class="text-truncate mb-0">{{ 	$employee->name }}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -113,8 +113,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 overflow-hidden">
-                                                    <p class="mb-1">Name (Bangla) :</p>
-                                                    <h6 class="text-truncate mb-0">{{ 	$student->name_bn }}</h6>
+                                                    <p class="mb-1">Qualification :</p>
+                                                    <h6 class="text-truncate mb-0">{{ $employee->qualification }}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -127,21 +127,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 overflow-hidden">
-                                                    <p class="mb-1">Qualification :</p>
-                                                    <h6 class="text-truncate mb-0">{{ $teacher->qualification }}</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 col-md-4">
-                                            <div class="d-flex mt-4">
-                                                <div class="flex-shrink-0 avatar-xs align-self-center me-3">
-                                                    <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
-                                                        <i class="ri-at-line"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1 overflow-hidden">
                                                     <p class="mb-1">Email :</p>
-                                                    <h6 class="text-truncate mb-0">{{ $teacher->email }}</h6>
+                                                    <h6 class="text-truncate mb-0">{{ $employee->email }}</h6>
                                                 </div>
                                             </div>
                                         </div>          
@@ -154,7 +141,7 @@
                                                 </div>
                                                 <div class="flex-grow-1 overflow-hidden">
                                                     <p class="mb-1">Mobile :</p>
-                                                    <h6 class="text-truncate mb-0">0{{ $teacher->mobile }}</h6>
+                                                    <h6 class="text-truncate mb-0">0{{ $employee->mobile }}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -166,8 +153,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 overflow-hidden">
-                                                    <p class="mb-1">Assign Class :</p>
-                                                    <h6 class="text-truncate mb-0"></h6>
+                                                    <p class="mb-1">Date of Birth :</p>
+                                                    <h6 class="text-truncate mb-0">{{ $employee->dob }}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -180,8 +167,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 overflow-hidden">
-                                                    <p class="mb-1">Assign Section :</p>
-                                                    <h6 class="text-truncate mb-0"></h6>
+                                                    <p class="mb-1">Married Status :</p>
+                                                    <h6 class="text-truncate mb-0">{{ $employee->married_status }}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -194,7 +181,7 @@
                                                 </div>
                                                 <div class="flex-grow-1 overflow-hidden">
                                                     <p class="mb-1">Department :</p>
-                                                    <h6 class="text-truncate mb-0"></h6>
+                                                    <h6 class="text-truncate mb-0">{{ $employee->department }}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -207,7 +194,7 @@
                                                 </div>
                                                 <div class="flex-grow-1 overflow-hidden">
                                                     <p class="mb-1">Salary :</p>
-                                                    <h6 class="text-truncate mb-0">{{ $teacher->salary }}</h6>
+                                                    <h6 class="text-truncate mb-0">{{ $employee->	monthly_salary }}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -236,7 +223,7 @@
                                         </div>
                                         <div class="flex-grow-1 overflow-hidden">
                                             <p class="mb-1">Father Name :</p>
-                                            <h6 class="text-truncate mb-0">{{ 	$teacher->father_name }}</h6>
+                                            <h6 class="text-truncate mb-0">{{ 	$employee->father_name }}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -249,7 +236,7 @@
                                         </div>
                                         <div class="flex-grow-1 overflow-hidden">
                                             <p class="mb-1">Mother Name :</p>
-                                            <h6 class="text-truncate mb-0">{{ 	$teacher->mother_name }}</h6>
+                                            <h6 class="text-truncate mb-0">{{ 	$employee->mother_name }}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -262,7 +249,7 @@
                                         </div>
                                         <div class="flex-grow-1 overflow-hidden">
                                             <p class="mb-1">Gender :</p>
-                                            <h6 class="text-truncate mb-0">{{ 	$teacher->gender }}</h6>
+                                            <h6 class="text-truncate mb-0">{{ 	$employee->gender }}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -276,7 +263,7 @@
                                         </div>
                                         <div class="flex-grow-1 overflow-hidden">
                                             <p class="mb-1">Religion :</p>
-                                            <h6 class="text-truncate mb-0">{{ $teacher->religion }}</h6>
+                                            <h6 class="text-truncate mb-0">{{ $employee->religion }}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -288,8 +275,8 @@
                                             </div>
                                         </div>
                                         <div class="flex-grow-1 overflow-hidden">
-                                            <p class="mb-1">Date of Birth :</p>
-                                            <h6 class="text-truncate mb-0">{{ $teacher->dob }}</h6>
+                                            <p class="mb-1">NID :</p>
+                                            <h6 class="text-truncate mb-0">{{ $employee->nid }}</h6>
                                         </div>
                                     </div>
                                 </div>          
@@ -302,7 +289,7 @@
                                         </div>
                                         <div class="flex-grow-1 overflow-hidden">
                                             <p class="mb-1">Blood Group :</p>
-                                            <h6 class="text-truncate mb-0">{{ $teacher->blood_group }}</h6>
+                                            <h6 class="text-truncate mb-0">{{ $employee->blood_group }}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -314,34 +301,8 @@
                                             </div>
                                         </div>
                                         <div class="flex-grow-1 overflow-hidden">
-                                            <p class="mb-1">Married Status :</p>
-                                            <h6 class="text-truncate mb-0">{{ $teacher->married_status }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4">
-                                    <div class="d-flex mt-4">
-                                        <div class="flex-shrink-0 avatar-xs align-self-center me-3">
-                                            <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
-                                                <i class="ri-at-line"></i>
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1 overflow-hidden">
-                                            <p class="mb-1">Marriage Date :</p>
-                                            <h6 class="text-truncate mb-0">{{ $teacher->marriage_date }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4">
-                                    <div class="d-flex mt-4">
-                                        <div class="flex-shrink-0 avatar-xs align-self-center me-3">
-                                            <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
-                                                <i class="ri-at-line"></i>
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1 overflow-hidden">
-                                            <p class="mb-1">Marriage Date :</p>
-                                            <h6 class="text-truncate mb-0">{{ $teacher->marriage_date }}</h6>
+                                            <p class="mb-1">Join Date :</p>
+                                            <h6 class="text-truncate mb-0">{{ $employee->	join_date }}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -358,7 +319,7 @@
                                         </div>
                                         <div class="flex-grow-1 overflow-hidden">
                                             <p class="mb-1">Presant Address :</p>
-                                            <h6 class="text-truncate mb-0">{{ $teacher->presant_address }}</h6>
+                                            <h6 class="text-truncate mb-0">{{ $employee->presant_address }}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -371,7 +332,7 @@
                                         </div>
                                         <div class="flex-grow-1 overflow-hidden">
                                             <p class="mb-1">Parmanent Address :</p>
-                                            <h6 class="text-truncate mb-0">{{ $teacher->parmanent_address }}</h6>
+                                            <h6 class="text-truncate mb-0">{{ $employee->parmanent_address }}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -386,7 +347,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title mb-3">About</h5>
-                            <p>{{ $teacher->about }} </p>
+                            <p>{{ $employee->about }} </p>
 
                         </div>
                         <!--end card-body-->

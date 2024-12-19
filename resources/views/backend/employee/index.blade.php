@@ -92,7 +92,7 @@
                                         <li><a href="{{ route('employee.show', $employee->id) }}" class="btn btn-success dropdown-item text-success"><i class="ri-eye-fill align-bottom me-2"></i> View</a></li>
                                         <li><a href="{{ route('employee.edit', $employee->id) }}" class="dropdown-item edit-item-btn text-secondary"><i class="ri-pencil-fill align-bottom me-2"></i> Edit</a></li>
                                         <li>
-                                            <form action="" method="post">
+                                            <form action="{{ route('employee.status', $employee->id) }}" method="post">
                                                 @csrf
                                                 @method('PATCH')
                                            
@@ -106,7 +106,6 @@
                             </td>
 
                     </tr>
-                    {{-- {{ route('employee.status', $employee->id) }} --}}
                       @empty
                           <tr>
                             <p>Lorem, ipsum dolor.</p>

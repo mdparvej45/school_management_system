@@ -50,6 +50,43 @@ function saveImage($image, string $dir, ?string $prefix = '', string $disk = 'pu
 }
 
 /**
+ * Updates a file given a new file and old path.
+ *
+ * @param UploadedFile $file
+ * @param string       $old_path
+ * @param string       $dir
+ * @param string       $prefix   skip if you need clientOriginalName
+ * @param string       $disk     default = public
+ *
+ * @return string $new_path
+ */
+function updateFile($file, $old_path, $dir, $prefix = '', $disk = 'public') {
+    if (null === $file) {
+        return $old_path;
+    }
+    $new_path = $old_path;
+    $isFile = str($old_path)->contains('/storage');
+    if ($isFile) {
+        $old_path = explode('storage', $old_path)[1];
+    }
+    $path = $old_path ? $disk.'/'.$old_path : 'no file exists';
+    $fileExists = Storage::exists($path);
+    if ($fileExists) {
+        if ($file) {
+            $new_path = saveImage($file, $dir, $prefix, $disk);
+            Storage::delete($path);
+        }
+    } else {
+        $new_path = saveImage($file, $dir, $prefix, $disk);
+    }
+
+    return $new_path;
+}
+
+
+
+
+/**
  * Deletes a file given its path from database.
  *
  * @param string $old_path

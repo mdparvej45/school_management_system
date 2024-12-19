@@ -102,9 +102,37 @@ class TeacherController extends Controller
     public function update(TeacherRequest $request, Teacher $teacher)
     {
         // dd($teacher);
+        DB::table('teachers')->updateOrInsert([
+            
+
+            'image' => updateFile($request->image, $teacher->image, 'backend/teacher/' . $request->unique_id, 'profile'), //This will update the file & return new path
+            'name_en' => $request->name_en,
+            'name_bn' => $request->name_bn,
+            'qualification' => $request->qualification,
+            'designation' => $request->designation,
+            'assign_class' => $request->assign_class,
+            'assign_section' => $request->assign_section,
+            'department' => $request->department,
+            'father_name' => $request->father_name,
+            'mother_name' => $request->mother_name,
+            'gender' => $request->gender,
+            'religion' => $request->religion,
+            'mobile' => $request->mobile,
+            'dob' => $request->dob,
+            'date_of_join' => $request->date_of_join,
+            'married_status' => $request->married_status,
+            'marriage_date' => $request->marriage_date,
+            'email' => $request->email,
+            'salary' => $request->salary,
+            'blood_group' => $request->blood_group,
+            'present_address' => $request->present_address,
+            'parmanent_address' => $request->parmanent_address,
+            'about' => $request->about,
+        ]);
+        return back();
     }
 
-
+//saveImage($request->image, 'backend/teacher/' . $request->unique_id, 'profile')
 
   /**
      * This is teacher active and deactive method.

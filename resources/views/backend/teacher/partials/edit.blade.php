@@ -9,8 +9,9 @@
             </div><!-- end card header -->
             <div class="card-body">
                 <div class="live-preview">
-                   <form action="{{ route('teacher.store') }}" method="post" enctype="multipart/form-data" >
+                   <form action="{{ route('teacher.update', $teacher) }}" method="post" enctype="multipart/form-data" >
                     @csrf
+                    @method('PATCH')
                     <div class="row gy-4">
                         <div class="row mt-4">
                             <div class="col-md-4">

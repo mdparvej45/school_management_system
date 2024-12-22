@@ -6,7 +6,7 @@
     $class = $attributes->get('class');
     $class = str($class)->contains('dotted-border') ? $class : 'form-control px-3 py-2 border-focus-2' . $class;
     $type = $attributes->get('type');
-    // dd($type);
+    // dd($name);
 @endphp
 
 <div class="mb-2">

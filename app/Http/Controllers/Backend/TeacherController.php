@@ -13,6 +13,35 @@ use App\Http\Requests\Backend\TeacherRequest;
 
 class TeacherController extends Controller
 {
+
+    protected $blood_groups = [
+        'A(+)',
+        'A(-)',
+        'B(+)',
+        'B(-)',
+        'AB(+)',
+        'AB(-)',
+        'O(+)',
+        'O(-)',
+    ];
+
+    protected $genders = [
+        'Male',
+        'Female',
+    ];
+
+    protected $religions = [
+        'Islam',
+        'Hinduisum',
+        'Buddist',
+        'Chirstian',
+    ];
+
+    protected $married_status = [
+        'Unmarrid',
+        'Marrid',
+    ];
+
     /**
      * Display a listing of the resource.
      */
@@ -27,9 +56,12 @@ class TeacherController extends Controller
      */
     public function create()
     {
-
-
-        return view('backend.teacher.partials.create');
+        $institute_classes = DB::table('institute_classes')->first();
+        $blood_groups = $this->blood_groups;
+        $genders = $this->genders;
+        $religions = $this->religions;
+        $married_status = $this->married_status;
+        return view('backend.teacher.partials.create', compact('blood_groups', 'genders', 'religions', 'married_status', 'institute_classes'));
     }
 
     /**
@@ -72,6 +104,7 @@ class TeacherController extends Controller
                 'blood_group' => $request->blood_group,
                 'present_address'=> $request->present_address,
                 'parmanent_address' => $request->parmanent_address,
+                'about' => $request->about,
                 'status' => 'Unapproved', //For status
             ]);
             return back();
@@ -93,7 +126,12 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        return view('backend.teacher.partials.edit', compact('teacher'));
+        $blood_groups = $this->blood_groups;
+        $institute_classes = DB::table('institute_classes')->first();
+        $genders = $this->genders;
+        $religions = $this->religions;
+        $married_status = $this->married_status;
+        return view('backend.teacher.partials.edit', compact('teacher', 'blood_groups', 'institute_classes', 'genders', 'religions', 'married_status'));
     }
 
     /**
@@ -102,10 +140,10 @@ class TeacherController extends Controller
     public function update(TeacherRequest $request, Teacher $teacher)
     {
         // dd($teacher);
-        DB::table('teachers')->updateOrInsert([
-            
-
-            'image' => updateFile($request->image, $teacher->image, 'backend/teacher/' . $request->unique_id, 'profile'), //This will update the file & return new path
+        $data = Teacher::findOrFail($teacher->id);
+        $data->update([
+            'unique_id' => $teacher->unique_id,
+            'image' => updateFile($request->image, $teacher->image, 'backend/teacher/' . $teacher->unique_id, 'profile'), //This will update the file & return new path
             'name_en' => $request->name_en,
             'name_bn' => $request->name_bn,
             'qualification' => $request->qualification,
@@ -122,7 +160,6 @@ class TeacherController extends Controller
             'date_of_join' => $request->date_of_join,
             'married_status' => $request->married_status,
             'marriage_date' => $request->marriage_date,
-            'email' => $request->email,
             'salary' => $request->salary,
             'blood_group' => $request->blood_group,
             'present_address' => $request->present_address,

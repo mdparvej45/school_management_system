@@ -13,6 +13,64 @@ use App\Http\Requests\Backend\StudentRequest;
 
 class StudentController extends Controller
 {
+
+    protected $blood_groups = [
+        'A(+)',
+        'A(-)',
+        'B(+)',
+        'B(-)',
+        'AB(+)',
+        'AB(-)',
+        'O(+)',
+        'O(-)',
+    ];
+
+    protected $genders = [
+        'Male',
+        'Female',
+    ];
+
+    protected $religions = [
+        'Islam',
+        'Hinduisum',
+        'Buddist',
+        'Chirstian',
+    ];
+
+    protected $guardians = [
+        'Grand mother',
+        'Grand daughter',
+        'Grand father',
+        'Grandma',
+        'Aunt',
+        'Grandpa',
+        'Brother',
+        'Grandson',
+        'Maid',
+        'Caretaker',
+        'Maternal Anut',
+        'Cousin',
+        'Maternal Uncle',
+        'Daughter',
+        'Mother',
+        'Nephew',
+        'Driver',
+        'Elder Sister',
+        'Father',
+        'Niece',
+        'Paternal Aunt',
+        'Paternul Uncle',
+        'Sister',
+        'Son',
+        'Staff',
+        'Uncle',
+        'Watchman',
+        'Others',
+    ];
+
+
+
+
     /**
      * Display a listing of the resource.
      */
@@ -29,41 +87,15 @@ class StudentController extends Controller
     {
         $classData = DB::table('institute_classes')->first();
         $classes = json_decode($classData->name, true);
-        $sections = json_decode($classData->section, true);
+        $sections = json_decode($classData->section, associative: true);
         $groups = json_decode($classData->group, true);
-
-        // dd($classes['play']);
-        $guardians = [
-            'Grand mother',
-            'Grand daughter',
-            'Grand father',
-            'Grandma',
-            'Aunt',
-            'Grandpa',
-            'Brother',
-            'Grandson',
-            'Maid',
-            'Caretaker',
-            'Maternal Anut',
-            'Cousin',
-            'Maternal Uncle',
-            'Daughter',
-            'Mother',
-            'Nephew',
-            'Driver',
-            'Elder Sister',
-            'Father',
-            'Niece',
-            'Paternal Aunt',
-            'Paternul Uncle',
-            'Sister',
-            'Son',
-            'Staff',
-            'Uncle',
-            'Watchman',
-            'Others',
-        ];
-        return view('backend.student.partials.create', compact('guardians', 'classes', 'sections', 'groups'));
+        $guardians = $this->guardians;
+        $blood_groups = $this->blood_groups;
+        $religions = $this->religions;
+        $genders = $this->genders;
+        $currentYear = date('Y');
+        $years = range($currentYear + 1, $currentYear - 5);
+        return view('backend.student.partials.create', compact('guardians', 'classes', 'sections', 'groups', 'blood_groups', 'religions', 'genders', 'years'));
     }
 
     /**
@@ -104,6 +136,7 @@ class StudentController extends Controller
                 'mother_mobile' => $request->mother_mobile,
                 'father_occ' => $request->father_occ,
                 'mother_occ' => $request->mother_occ,
+                'blood_group' => $request->blood_group,
                 'gender' => $request->gender,
                 'religion' => $request->religion,
                 'nationality' => $request->nationality,
@@ -137,7 +170,17 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        $classData = DB::table('institute_classes')->first();
+        $classes = json_decode($classData->name, true);
+        $sections = json_decode($classData->section, associative: true);
+        $groups = json_decode($classData->group, true);
+        $guardians = $this->guardians;
+        $blood_groups = $this->blood_groups;
+        $religions = $this->religions;
+        $genders = $this->genders;
+        $currentYear = date('Y');
+        $years = range($currentYear + 1, $currentYear - 5);
+        return view('backend.student.partials.edit', compact('student','guardians', 'classes', 'sections', 'groups', 'blood_groups', 'religions', 'genders', 'years'));
     }
 
     /**
@@ -145,7 +188,41 @@ class StudentController extends Controller
      */
     public function update(StudentRequest $request, Student $student)
     {
-        //
+        $date = Student::findOrFail($student->id);
+        $date->update([
+            'image' => updateFile($request->image, $student->image, 'backend/student/' . $student->unique_id, 'profile'),
+            'name_en' => $request->name_en,
+            'name_bn'=> $request->name_bn,
+            'class' => $request->class,
+            'section' => $request->section,
+            'admission_fee' => $request->admission_fee,
+            'roll' => $request->roll,
+            'group' => $request->group,
+            'scholarship' => $request->scholarship,
+            'admission_session' => $request->admission_session,
+            'admission_year' => $request->admission_year,
+            'father_name_en' => $request->father_name_en,
+            'father_name_bn' => $request->father_name_bn,
+            'father_mobile' => $request->father_mobile,
+            'mother_name_en' => $request->mother_name_en,
+            'mother_name_bn' => $request->mother_name_bn,
+            'mother_mobile' => $request->mother_mobile,
+            'father_occ' => $request->father_occ,
+            'mother_occ' => $request->mother_occ,
+            'blood_group' => $request->blood_group,
+            'gender' => $request->gender,
+            'religion' => $request->religion,
+            'nationality' => $request->nationality,
+            'dob' => $request->dob,
+            'guardian_name' => $request->guardian_name,
+            'guardian_occ' => $request->guardian_occ,
+            'guardian_mobile' => $request->guardian_mobile,
+            'guardian_relation' => $request->guardian_relation,
+            'present_address' => $request->present_address,
+            'parmanent_address' => $request->parmanent_address,
+            'about' => $request->about,
+        ]);
+        return back();
     }
 
     /**

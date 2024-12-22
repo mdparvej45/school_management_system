@@ -38,17 +38,23 @@
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <x-backend.forms.select name="assign_class" id="assign_class" label="Assign Class" placeholder="Choise Assign Class..." >
-                                    <option value="Ten">Ten</option>
+                                    @foreach (json_decode($institute_classes->name) as $class )
+                                    <option value="{{ $class }}" >{{ $class }}</option>
+                                    @endforeach
                                 </x-backend.forms.select>
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="assign_section" id="assign_section" label="Assign Section" placeholder="Choise Assign Section..." >
-                                    <option value="A">A</option>
+                                    @foreach (json_decode($institute_classes->section) as $section )
+                                    <option value="{{ $section }}" >{{ $section }}</option>
+                                    @endforeach
                                 </x-backend.forms.select>
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="department" id="department" label="Department" placeholder="Choise Department..." >
-                                    <option value="Accounting">Accounting</option>
+                                    @foreach (json_decode($institute_classes->group) as $group )
+                                    <option value="{{ $group }}" >{{ $group }}</option>
+                                    @endforeach
                                 </x-backend.forms.select>                            
                             </div>
                         </div>
@@ -61,18 +67,18 @@
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="gender" id="gender" label="Gender" placeholder="Choise Gender..." >
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                    @foreach ($genders as $gender )
+                                    <option value="{{ $gender }}" >{{ $gender }}</option>
+                                    @endforeach
                                 </x-backend.forms.select>
                             </div>   
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <x-backend.forms.select name="religion" id="religion" label="Religion" placeholder="Choise Religion..." >
-                                    <option value="Islam">Islam</option>
-                                    <option value="Hinduisum">Hinduisum</option>
-                                    <option value="Buddist">Buddist</option>
-                                    <option value="Chirstian">Chirstian</option>
+                                    @foreach ($religions as $religion )
+                                    <option value="{{ $religion }}" >{{ $religion }}</option>
+                                    @endforeach
                                 </x-backend.forms.select>
                             </div>
                             <div class="col-md-4">
@@ -88,8 +94,9 @@
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="married_status" id="married_status" label="Married Status" placeholder="Choise Married Status..." >
-                                    <option value="Marrid">Marrid</option>
-                                    <option value="Unmarrid">Unmarrid</option>
+                                    @foreach ($married_status as $status )
+                                    <option value="{{ $status }}" >{{ $status }}</option>
+                                    @endforeach
                                 </x-backend.forms.select>
                             </div>
                             <div class="col-md-4">
@@ -106,14 +113,9 @@
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="blood_group" id="blood" label="Blood Group" placeholder="Choise Blood Group..." >
-                                    <option value="A(+)">A(+)</option>
-                                    <option value="A(-)">A(-)</option>
-                                    <option value="B(+)">B(+)</option>
-                                    <option value="B(-)">B(-)</option>
-                                    <option value="AB(+)">AB(+)</option>
-                                    <option value="AB(-)">AB(-)</option>
-                                    <option value="O(+)">O(+)</option>
-                                    <option value="O(-)">O(-)</option>
+                                    @foreach ($blood_groups as $blood_group )
+                                    <option value="{{ $blood_group }}" >{{ $blood_group }}</option>
+                                    @endforeach
                                 </x-backend.forms.select>
                             </div>   
                         </div>
@@ -142,7 +144,19 @@
                                     <span class="text-danger"></span>
                                 @enderror  
                             </div>
-                    </div>
+                            <div class="col-md-12">
+                                <label for="about" class="form-label">About</label>
+                                <textarea id="message"
+                                    class="form-control @error('about')
+                                    is-invalid
+                                @enderror"
+                                    name="about" style="height
+                                    57px"></textarea>
+                                @error('about')
+                                    <span class="text-danger"></span>
+                                @enderror  
+                            </div>
+                        </div>
                     </div>
                     <div class="mt-3">
                         <x-backend.ui.button class="w-100" type=submit >

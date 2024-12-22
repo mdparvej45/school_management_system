@@ -95,8 +95,8 @@
                                         <i class="ri-more-fill align-middle"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" style="">
-                                        <li><a href="" class="btn btn-success dropdown-item text-success"><i class="ri-eye-fill align-bottom me-2"></i> View</a></li>
-                                        <li><a href="" class="dropdown-item edit-item-btn text-secondary"><i class="ri-pencil-fill align-bottom me-2"></i> Edit</a></li>
+                                        <li><a href="{{ route('student.show', $student->id) }}" class="btn btn-success dropdown-item text-success"><i class="ri-eye-fill align-bottom me-2"></i> View</a></li>
+                                        <li><a href="{{ route('student.edit', $student->id) }}" class="dropdown-item edit-item-btn text-secondary"><i class="ri-pencil-fill align-bottom me-2"></i> Edit</a></li>
                                         <li>
                                             <form action="" method="post">
                                                 @csrf

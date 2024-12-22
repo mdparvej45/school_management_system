@@ -58,10 +58,10 @@
                             <div class="col-md-4">
                                 <x-backend.forms.select name="group" id="group" required label="Group" placeholder="Choise Group..." >
                                     @forelse ($groups as $group)
-                                            <option value="{{ $group }}">{{ $group }}</option>
-                                            @empty
-                                            <option>No Group Found</option>
-                                            @endforelse
+                                        <option value="{{ $group }}">{{ $group }}</option>
+                                        @empty
+                                        <option>No Group Found</option>
+                                    @endforelse
                                 </x-backend.forms.select>
                             </div>
                         </div>
@@ -71,18 +71,16 @@
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="admission_session" required id="session" label="Admission Session" placeholder="Choise Admission Session..." >
-                                    <option value="2025">2025</option>
-                                    <option value="2024">2024</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2022">2022</option>
+                                    @foreach ($years as $year)
+                                    <option value="{{ $year }}">{{ $year }}</option>
+                                    @endforeach
                                 </x-backend.forms.select>
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="admission_year" required id="year" label="Admission Year" placeholder="Choise Admission Year..." >
-                                    <option value="2025">2025</option>
-                                    <option value="2024">2024</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2022">2022</option>
+                                    @foreach ($years as $year)
+                                    <option value="{{ $year }}">{{ $year }}</option>
+                                    @endforeach
                                 </x-backend.forms.select>
                             </div>   
                         </div>
@@ -117,31 +115,25 @@
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="blood_group" id="blood" label="Blood Group" placeholder="Choise Blood Group..." >
-                                    <option value="A(+)">A(+)</option>
-                                    <option value="A(-)">A(-)</option>
-                                    <option value="B(+)">B(+)</option>
-                                    <option value="B(-)">B(-)</option>
-                                    <option value="AB(+)">AB(+)</option>
-                                    <option value="AB(-)">AB(-)</option>
-                                    <option value="O(+)">O(+)</option>
-                                    <option value="O(-)">O(-)</option>
+                                    @foreach ($blood_groups as $blood_group )
+                                    <option value="{{ $blood_group }}" >{{ $blood_group }}</option>
+                                    @endforeach
                                 </x-backend.forms.select>
                             </div>   
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <x-backend.forms.select name="gender" id="gender" label="Gender" required placeholder="Choise Gender..." >
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                    @foreach ($genders as $gender )
+                                    <option value="{{ $gender }}" >{{ $gender }}</option>
+                                    @endforeach
                                 </x-backend.forms.select>                            
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.select name="religion" id="religion" label="Religion" required placeholder="Choise Religion..." >
-                                    <option value="Islam">Islam</option>
-                                    <option value="Hinduisum">Hinduisum</option>
-                                    <option value="Buddist">Buddist</option>
-                                    <option value="Chirstian">Chirstian</option>
-                                    <option value="Others">Others</option>
+                                    @foreach ($religions as $religion )
+                                    <option value="{{ $religion }}" >{{ $religion }}</option>
+                                    @endforeach
                                 </x-backend.forms.select>
                             </div>  
                             <div class="col-md-4">

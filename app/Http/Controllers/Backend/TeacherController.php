@@ -139,11 +139,9 @@ class TeacherController extends Controller
      */
     public function update(TeacherRequest $request, Teacher $teacher)
     {
-        // dd($teacher);
         $data = Teacher::findOrFail($teacher->id);
         $data->update([
-            'unique_id' => $teacher->unique_id,
-            'image' => updateFile($request->image, $teacher->image, 'backend/teacher/' . $teacher->unique_id, 'profile'), //This will update the file & return new path
+            'image' => ($request->image, $teacher->image, updateFile'backend/teacher/' . $teacher->unique_id, 'profile'), //This will update the file & return new path
             'name_en' => $request->name_en,
             'name_bn' => $request->name_bn,
             'qualification' => $request->qualification,

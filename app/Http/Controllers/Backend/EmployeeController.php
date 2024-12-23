@@ -12,6 +12,42 @@ use App\Http\Requests\Backend\EmployeeRequest;
 
 class EmployeeController extends Controller
 {
+
+
+    protected $blood_groups = [
+        'A(+)',
+        'A(-)',
+        'B(+)',
+        'B(-)',
+        'AB(+)',
+        'AB(-)',
+        'O(+)',
+        'O(-)',
+    ];
+
+    protected $genders = [
+        'Male',
+        'Female',
+    ];
+
+    protected $religions = [
+        'Islam',
+        'Hinduisum',
+        'Buddist',
+        'Chirstian',
+    ];
+    protected $married_status = [
+        'Unmarrid',
+        'Marrid',
+    ];
+    protected $employess = [
+        'Superadmin',
+        'Principle',
+        'Accountant',
+        'Operator',
+        'Employee',
+    ];
+
     /**
      * Display a listing of the resource.
      */
@@ -26,7 +62,12 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('backend.employee.partials.create');
+        $blood_groups = $this->blood_groups;
+        $religions = $this->religions;
+        $genders = $this->genders;
+        $married_status = $this->married_status;
+        $employess = $this->employess;
+        return view('backend.employee.partials.create', compact('blood_groups', 'religions', 'genders', 'married_status', 'employess'));
     }
 
     /**
@@ -48,7 +89,8 @@ class EmployeeController extends Controller
             DB::table('employees')->insert([
                 'user_id' => $user->id,
                 'unique_id' => $user->unique_id,
-                'image' => saveImage($request->image, 'backend/employee/' . $request->unique_id, 'profile'),
+                'type' => $request->type,
+                'image' => saveImage($request->image, 'backend/employee/' . $user->unique_id, 'profile'),
                 'name' => $request->name,
                 'blood_group' => $request->blood_group,
                 'designation' => $request->designation,
@@ -98,7 +140,13 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        $blood_groups = $this->blood_groups;
+        $religions = $this->religions;
+        $genders = $this->genders;
+        $married_status = $this->married_status;
+        $employess = $this->employess;
+        return view('backend.employee.partials.edit', compact('employee','blood_groups', 'religions', 'genders', 'married_status', 'employess'));
+
     }
 
     /**
@@ -106,7 +154,31 @@ class EmployeeController extends Controller
      */
     public function update(EmployeeRequest $request, Employee $employee)
     {
-        //
+        $data = Employee::findOrFail($employee->id);
+        $data->update([
+            'type' => $request->type,
+            'image' => updateFile($request->image, $employee->image, 'backend/teacher/' . $employee->unique_id, 'profile'),
+            'name' => $request->name,
+            'blood_group' => $request->blood_group,
+            'designation' => $request->designation,
+            'qualification'=> $request->qualification,
+            'department'=> $request->department,
+            'monthly_salary'=> $request->monthly_salary,
+            'father_name' => $request->father_name,
+            'mother_name'=> $request->mother_name,
+            'gender' => $request->gender,
+            'religion' => $request->religion,
+            'nationality'=> $request->nationality,
+            'nid'=> $request->nid,
+            'mobile'=> $request->mobile,
+            'email'=> $request->email,
+            'join_date'=> $request->join_date,
+            'dob'=> $request->dob,
+            'married_status'=> $request->married_status,
+            'present_address'=> $request->present_address,
+            'permanent_address' => $request->permanent_address,
+            'about' => $request->about,
+        ]);
     }
 
     /**

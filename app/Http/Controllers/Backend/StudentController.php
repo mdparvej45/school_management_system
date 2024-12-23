@@ -69,8 +69,6 @@ class StudentController extends Controller
     ];
 
 
-
-
     /**
      * Display a listing of the resource.
      */
@@ -224,6 +222,28 @@ class StudentController extends Controller
         ]);
         return back();
     }
+
+
+
+      /**
+     * This is teacher active and deactive method.
+     */
+    public function status(Request $student)
+    {
+       $find = Student::find($student->id);
+      if($find->status == 'Unapproved'){
+        Student::find($student->id)->update(['status' => 'Active']);
+
+      }elseif($find->status == 'Inactive'){
+        Student::find($student->id)->update(['status' => 'Active']);
+      }else{
+        Student::find($student->id)->update(['status' => 'Inactive']);
+
+      }
+      return back();
+    }
+
+
 
     /**
      * Remove the specified resource from storage.

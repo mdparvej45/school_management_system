@@ -87,8 +87,7 @@
                                 <br/>
                                 {{ $student->section }}
                             </td>
-                                {{-- class="{{ $student->status == 'Unapproved' ? "text-warning" : ($student->status == 'Active' ? "text-success" : "text-danger") }}" --}}
-                                <td><i class="ri-checkbox-blank-circle-fill align-bottom me-2"></i>{{ $student->status }}
+                                <td class="{{ $student->status == 'Unapproved' ? "text-warning" : ($student->status == 'Active' ? "text-success" : "text-danger") }}" ><i class="ri-checkbox-blank-circle-fill align-bottom me-2"></i>{{ $student->status }}
                             <td>
                                 <div class="dropdown d-inline-block">
                                     <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -98,13 +97,12 @@
                                         <li><a href="{{ route('student.show', $student->id) }}" class="btn btn-success dropdown-item text-success"><i class="ri-eye-fill align-bottom me-2"></i> View</a></li>
                                         <li><a href="{{ route('student.edit', $student->id) }}" class="dropdown-item edit-item-btn text-secondary"><i class="ri-pencil-fill align-bottom me-2"></i> Edit</a></li>
                                         <li>
-                                            <form action="" method="post">
+                                            <form action="{{ route('student.status', $student->id) }}" method="post">
                                                 @csrf
                                                 @method('PATCH')
-                                           
-                                                    {{-- <x-backend.ui.button type="submit" class="dropdown-item remove-item-btn text-danger">
-                                                        <span class="{{ $teacher->status == 'Unapproved' ? "text-primary" : ($teacher->status == 'Active' ? "text-danger" : "text-success") }}"><i class="{{ $teacher->status == 'Unapproved' ? "ri-close-circle-line" : ($teacher->status == 'Active' ? "ri-close-circle-line" : "ri-checkbox-blank-circle-fill") }} align-bottom me-2"></i> {{ $teacher->status == 'Unapproved' ? "Approve" : ($teacher->status == 'Active' ? "Inactive" : "Active") }}</span>
-                                                    </x-backend.ui.button> --}}
+                                                    <x-backend.ui.button type="submit" class="dropdown-item remove-item-btn text-danger">
+                                                        <span class="{{ $student->status == 'Unapproved' ? "text-primary" : ($student->status == 'Active' ? "text-danger" : "text-success") }}"><i class="{{ $student->status == 'Unapproved' ? "ri-close-circle-line" : ($student->status == 'Active' ? "ri-close-circle-line" : "ri-checkbox-blank-circle-fill") }} align-bottom me-2"></i> {{ $student->status == 'Unapproved' ? "Approve" : ($student->status == 'Active' ? "Inactive" : "Active") }}</span>
+                                                    </x-backend.ui.button>
                                             </form>
                                         </li>
                                     </ul>

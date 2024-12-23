@@ -169,8 +169,6 @@ class TeacherController extends Controller
         return back();
     }
 
-//saveImage($request->image, 'backend/teacher/' . $request->unique_id, 'profile')
-
   /**
      * This is teacher active and deactive method.
      */

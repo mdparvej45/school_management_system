@@ -22,7 +22,17 @@ class AdmissionApplicationController extends Controller
      */
     public function create()
     {
-        // echo 'Hello world';
+        $classData = DB::table('institute_classes')->first();
+        $classes = json_decode($classData->name, true);
+        $sections = json_decode($classData->section, associative: true);
+        $groups = json_decode($classData->group, true);
+        $guardians = $this->guardians;
+        $blood_groups = $this->blood_groups;
+        $religions = $this->religions;
+        $genders = $this->genders;
+        $currentYear = date('Y');
+        $years = range($currentYear + 1, $currentYear - 5);
+        return view('backend.online-admission.partials.create');
     }
 
     /**

@@ -2,13 +2,71 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Requests\Frontend\AdmissionApplicationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Frontend\AdmissionApplication;
+use App\Http\Requests\Frontend\AdmissionApplicationRequest;
 
 class AdmissionApplicationController extends Controller
 {
+
+    protected $blood_groups = [
+        'A(+)',
+        'A(-)',
+        'B(+)',
+        'B(-)',
+        'AB(+)',
+        'AB(-)',
+        'O(+)',
+        'O(-)',
+    ];
+
+    protected $genders = [
+        'Male',
+        'Female',
+    ];
+
+    protected $religions = [
+        'Islam',
+        'Hinduisum',
+        'Buddist',
+        'Chirstian',
+    ];
+
+    protected $guardians = [
+        'Grand mother',
+        'Grand daughter',
+        'Grand father',
+        'Grandma',
+        'Aunt',
+        'Grandpa',
+        'Brother',
+        'Grandson',
+        'Maid',
+        'Caretaker',
+        'Maternal Anut',
+        'Cousin',
+        'Maternal Uncle',
+        'Daughter',
+        'Mother',
+        'Nephew',
+        'Driver',
+        'Elder Sister',
+        'Father',
+        'Niece',
+        'Paternal Aunt',
+        'Paternul Uncle',
+        'Sister',
+        'Son',
+        'Staff',
+        'Uncle',
+        'Watchman',
+        'Others',
+    ];
+
+
+
     /**
      * Display a listing of the resource.
      */
@@ -32,7 +90,7 @@ class AdmissionApplicationController extends Controller
         $genders = $this->genders;
         $currentYear = date('Y');
         $years = range($currentYear + 1, $currentYear - 5);
-        return view('backend.online-admission.partials.create');
+        return view('backend.online-admission.partials.create', compact('classes', 'sections', 'groups', 'guardians', 'blood_groups', 'genders', 'currentYear', 'religions'));
     }
 
     /**

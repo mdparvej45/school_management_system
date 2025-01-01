@@ -314,11 +314,11 @@
                         <i class="ri-dashboard-2-line"></i> <span>Employee Information</span>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('teacher.edit') }}"  role="button">
-                        <i class="ri-dashboard-2-line"></i> <span>Teacher Edit</span>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('admission-application.create') }}"  role="button">
+                        <i class="ri-dashboard-2-line"></i> <span>Online Admission</span>
                     </a>
-                </li>  --}}
+                </li> 
             </ul>
         </div>
         <!-- Sidebar -->

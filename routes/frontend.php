@@ -1,6 +1,7 @@
 <?php 
 
 use App\Http\Controllers\Backend\EmployeeController;
+use App\Http\Controllers\Frontend\AdmissionApplicationController;
 
 
 
@@ -13,7 +14,7 @@ Route::get('/', function () {
 
 
 Route::resource('employee', EmployeeController::class);
-
+Route::resource('admission-application', AdmissionApplicationController::class);
 
 
 

@@ -9,7 +9,7 @@
             </div><!-- end card header -->
             <div class="card-body">
                 <div class="live-preview">
-                   <form action="{{ route('student.store') }}" method="post" enctype="multipart/form-data" >
+                   <form action="{{ route('admission-application.store') }}" method="post" enctype="multipart/form-data" >
                     @csrf
                     @method('POST')
                     <div class="row gy-4">

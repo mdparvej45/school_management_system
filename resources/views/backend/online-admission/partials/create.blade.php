@@ -131,9 +131,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <x-backend.forms.input name="emerg_number" type="number" label="WhatsApp/SMS"></x-backend.forms.input>
-                                <x-backend.forms.input name="unique_id" type="text" hidden value="{{'STUD' . random_int(1000000, 9999999) }}" label="" ></x-backend.forms.input>
-                        
+                                <x-backend.forms.input name="emerg_number" type="number" label="WhatsApp/SMS"></x-backend.forms.input>                        
                             </div>
                             <div class="col-md-4">
                                 <x-backend.forms.input name="guardian_name" type="text" label="Guardian Name" ></x-backend.forms.input>

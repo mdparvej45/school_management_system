@@ -47,7 +47,7 @@ class StudentRequest extends FormRequest
             'gender' => 'sometimes|string|max:255',
             'religion' => 'sometimes|string|max:255',
             'nationality' => 'nullable|string|max:255', //nullable
-            'email' => 'nullable|nullable|email|unique:users,email', //nullable
+            'email' => 'nullable|email|unique:users,email', //nullable
             'dob'=> 'sometimes|date', 
             'guardian_name'=> 'nullable|string|max:255', //nullable
             'guardian_occ'=> 'nullable|string|max:255', //nullable
